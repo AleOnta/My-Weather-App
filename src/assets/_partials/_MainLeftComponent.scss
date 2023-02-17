@@ -1,0 +1,44 @@
+.mainLeftContainer {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+
+  .inputContainer {
+    color: black;
+    .inputSearch {
+      width: 70%;
+      border: none;
+    }
+  }
+
+  .inputIcons {
+    width: 15%;
+  }
+
+  .currentWeatherPhoto {
+    width: 90%;
+    height: 90%;
+  }
+
+  .weatherTextContainer {
+    .degree {
+      font-size: 6em;
+      font-weight: 400;
+    }
+
+    h4 span {
+      color: lightgray;
+    }
+  }
+
+  .description {
+    font-weight: 700;
+  }
+
+  .currentCityContainer {
+    background-color: aliceblue;
+    border-radius: 25px;
+    width: 100%;
+    height: 120px;
+  }
+}
