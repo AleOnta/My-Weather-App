@@ -48,7 +48,7 @@ const MainLeftComponent = () => {
 
   return (
     <Col xs={3} className="mainLeftContainer">
-      <Row className="h-100 pt-5 pb-1 px-4">
+      <Row className="h-100 pt-5 pb-1 px-0 px-xl-4">
         <Col xs={12} className="d-flex justify-content-around align-items-center inputSection">
           <BsSearch
             className="inputIcon"
@@ -70,7 +70,7 @@ const MainLeftComponent = () => {
               onChange={(e) => setSearch(e.target.value)}
             />
           </InputGroup>
-          <BsGeoFill className="inputIcon" />
+          <BsGeoFill className="inputIcon d-none d-xl-block" />
         </Col>
         <Col xs={12}>
           {dailyWeather.weather && (
@@ -100,6 +100,7 @@ const MainLeftComponent = () => {
                   <img
                     src={"http://openweathermap.org/img/wn/" + dailyWeather.weather[0].icon + ".png"}
                     alt="weather"
+                    className="currentWeatherIcon"
                   />
                   <p className="description m-0 pl-2">{dailyWeather.weather[0].description}</p>
                 </>
@@ -111,6 +112,7 @@ const MainLeftComponent = () => {
                   <img
                     src={"http://openweathermap.org/img/wn/" + dailyWeather.weather[0].icon + ".png"}
                     alt="weather"
+                    className="currentWeatherIcon"
                   />
                   <p className="description m-0 pl-2">{dailyWeather.weather[0].main}</p>
                 </>

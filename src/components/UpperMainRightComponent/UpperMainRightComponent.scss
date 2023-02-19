@@ -9,6 +9,10 @@
     weight: 400;
   }
 
+  @media screen and (max-width: 992px) {
+    font-size: 1.3em;
+  }
+
   &:focus {
     color: black;
     text-decoration: underline;
@@ -38,5 +42,16 @@
   &:hover {
     transform: scale(1.1);
     transition: 0.3s;
+  }
+
+  @media screen and (max-width: 992px) {
+    font-size: 1em;
+  }
+}
+
+.upperRightCards {
+  @media screen and (max-width: 1050px) {
+    display: flex;
+    align-items: center;
   }
 }

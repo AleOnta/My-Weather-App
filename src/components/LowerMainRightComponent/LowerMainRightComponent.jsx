@@ -34,7 +34,7 @@ const LowerMainRightComponent = () => {
 
   return (
     <>
-      <Col xs={12} className="highlights px-5">
+      <Col xs={12} className="highlights px-5 d-flex align-items-center">
         <h3 className="mb-0">Today's Highlights</h3>
       </Col>
       <Col xs={12} className="lowerCards px-5 pb-2">
@@ -49,12 +49,12 @@ const LowerMainRightComponent = () => {
                   <>
                     <div className="d-flex justify-content-between align-items-center">
                       <p className="m-0 temp">Min. {Math.round(dailyWeather.main.temp_min)}°</p>
-                      <img src={thermoMin} alt="thermometer" style={{ width: 10 + "%" }} />
+                      <img src={thermoMin} alt="thermometer" className="weatherIcon" />
                     </div>
 
                     <div className="d-flex justify-content-between align-items-center">
                       <p className="m-0 temp">Max. {Math.round(dailyWeather.main.temp_max)}°</p>
-                      <img src={thermoMax} alt="thermometer" style={{ width: 10 + "%" }} />
+                      <img src={thermoMax} alt="thermometer" className="weatherIcon" />
                     </div>
                     <p className="m-0 temp">Feels like {Math.round(dailyWeather.main.feels_like)}°</p>
                   </>
@@ -70,7 +70,7 @@ const LowerMainRightComponent = () => {
               <Card.Body>
                 <div className="d-flex align-items-center justify-content-between">
                   {dailyWeather.wind && <h2>{dailyWeather.wind.speed} km/h</h2>}
-                  <img src={wind} alt="wind icon" style={{ width: 10 + "%" }} />
+                  <img src={wind} alt="wind icon" className="weatherIcon" />
                 </div>
                 <div className="d-flex align-items-center">
                   <BsCompass />
@@ -88,11 +88,11 @@ const LowerMainRightComponent = () => {
               <Card.Body>
                 <div className="d-flex align-items-center justify-content-between">
                   {dailyWeather.sys && <p>{epochToTime(dailyWeather.sys.sunrise)} AM</p>}
-                  <img src={sunrise} alt="sunrise icon" style={{ width: 10 + "%" }} />
+                  <img src={sunrise} alt="sunrise icon" className="weatherIcon" />
                 </div>
                 <div className="d-flex align-items-center justify-content-between">
                   {dailyWeather.sys && <p>{epochToTime(dailyWeather.sys.sunset)} PM</p>}
-                  <img src={sunset} alt="sunset icon" style={{ width: 10 + "%" }} />
+                  <img src={sunset} alt="sunset icon" className="weatherIcon" />
                 </div>
               </Card.Body>
             </Card>
@@ -107,7 +107,7 @@ const LowerMainRightComponent = () => {
                   <>
                     <div className="d-flex align-items-center justify-content-between">
                       <h2>{dailyWeather.main.humidity}%</h2>
-                      <img src={humidity} alt="humidity icon" style={{ width: 10 + "%" }} />
+                      <img src={humidity} alt="humidity icon" className="weatherIcon" />
                     </div>
                     <div>
                       <p>{humidityChecker(parseInt(dailyWeather.main.humidity))}</p>
@@ -127,7 +127,7 @@ const LowerMainRightComponent = () => {
                   <>
                     <div className="d-flex align-items-center justify-content-between">
                       <h2>{dailyWeather.visibility.toString().slice(0, 2)} km</h2>
-                      <img src={visibility} alt="visibility icon" style={{ width: 10 + "%" }} />
+                      <img src={visibility} alt="visibility icon" className="weatherIcon" />
                     </div>
                     <div>
                       <p>{visibilityChecker(dailyWeather.visibility)}</p>
@@ -147,7 +147,7 @@ const LowerMainRightComponent = () => {
                   <>
                     <div className="d-flex align-items-center justify-content-between">
                       <h2>{dailyWeather.main.pressure} hPa</h2>
-                      <img src={pressure} alt="pressure icon" style={{ width: 10 + "%" }} />
+                      <img src={pressure} alt="pressure icon" className="weatherIcon" />
                     </div>
                     <div>
                       <p>{pressureChecker(dailyWeather.main.pressure)}</p>
