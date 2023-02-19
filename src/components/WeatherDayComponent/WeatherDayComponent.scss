@@ -1,6 +1,9 @@
 .dayRow {
   display: flex;
   justify-content: space-around;
+  @media screen and (max-width: 767px) {
+    overflow: scroll;
+  }
 }
 
 .dayCard {

@@ -1,6 +1,9 @@
 .mainLeftContainer {
   background-color: white;
   border-radius: 25px 0 0 25px;
+  @media screen and (max-width: 767px) {
+    border-radius: 25px 25px 0 0;
+  }
 
   .inputSection {
     border: 1px solid rgba(211, 211, 211, 0.76);
@@ -30,6 +33,9 @@
       @media screen and (max-width: 950px) {
         font-size: 0.6em;
       }
+      @media screen and (max-width: 767px) {
+        font-size: 1em;
+      }
     }
   }
 
@@ -47,6 +53,9 @@
     }
     @media screen and (max-width: 950px) {
       font-size: 0.68em;
+    }
+    @media screen and (max-width: 767px) {
+      font-size: 1em;
     }
   }
 
@@ -72,6 +81,10 @@
 
   .currentWeatherIcon {
     width: 25%;
+
+    @media screen and (max-width: 767px) {
+      width: 15%;
+    }
   }
 
   .description {
@@ -82,6 +95,9 @@
     }
     @media screen and (max-width: 940px) {
       font-size: 0.6em;
+    }
+    @media screen and (max-width: 767px) {
+      font-size: 1.2em;
     }
   }
 
@@ -100,6 +116,9 @@
       }
       @media screen and (max-width: 950px) {
         font-size: 0.8em;
+      }
+      @media screen and (max-width: 767px) {
+        font-size: 1.5em;
       }
     }
     .currentLocation {

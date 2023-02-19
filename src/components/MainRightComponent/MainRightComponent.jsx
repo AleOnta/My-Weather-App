@@ -4,7 +4,7 @@ import UpperMainRightComponent from "../UpperMainRightComponent/UpperMainRightCo
 
 const MainRightComponent = () => {
   return (
-    <Col xs={9} className="mainRightContainer h-100">
+    <Col xs={12} md={9} className="mainRightContainer h-100">
       <Row className="rowRight">
         <UpperMainRightComponent />
         <LowerMainRightComponent />

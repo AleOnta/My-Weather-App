@@ -47,8 +47,8 @@ const MainLeftComponent = () => {
   }, [locationCoordinates]);
 
   return (
-    <Col xs={3} className="mainLeftContainer">
-      <Row className="h-100 pt-5 pb-1 px-0 px-xl-4">
+    <Col xs={12} md={3} className="mainLeftContainer">
+      <Row className="h-100 pt-5 pb-1 px-5 px-md-0 px-xl-4">
         <Col xs={12} className="d-flex justify-content-around align-items-center inputSection">
           <BsSearch
             className="inputIcon"
@@ -72,7 +72,7 @@ const MainLeftComponent = () => {
           </InputGroup>
           <BsGeoFill className="inputIcon d-none d-xl-block" />
         </Col>
-        <Col xs={12}>
+        <Col xs={6} md={12} className="pt-4 pt-md-0">
           {dailyWeather.weather && (
             <img
               src={"http://openweathermap.org/img/wn/" + dailyWeather.weather[0].icon + "@4x.png"}
@@ -81,7 +81,7 @@ const MainLeftComponent = () => {
             />
           )}
         </Col>
-        <Col xs={12} className="weatherTextContainer">
+        <Col xs={6} md={12} className="weatherTextContainer d-flex align-items-center pt-4 pt-md-0">
           <Row>
             <Col xs={12}>{!ready && <h3 className="degree">{Math.round(dailyWeather.main.temp)}°</h3>}</Col>
             <Col xs={12} className="pb-4 pt-3">
@@ -90,9 +90,11 @@ const MainLeftComponent = () => {
               </h4>
             </Col>
           </Row>
-          <hr />
+          <hr className="d-none d-md-block" />
         </Col>
+
         <Col xs={12}>
+          <hr className="d-md-none" />
           <Row>
             <Col xs={12} className="d-flex align-items-center pt-4">
               {dailyWeather.weather && (
