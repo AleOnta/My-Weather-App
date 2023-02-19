@@ -1,0 +1,42 @@
+.dayOrWeek {
+  background-color: inherit;
+  transition: 0.5s;
+  border: none;
+
+  color: lightgray;
+  font: {
+    size: 1.6em;
+    weight: 400;
+  }
+
+  &:focus {
+    color: black;
+    text-decoration: underline;
+    transition: 0.5s;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+  }
+}
+
+.celsiusOrFarheneit {
+  font-size: 1.3em;
+  background-color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 30px;
+  transition: 0.5s;
+
+  &:focus {
+    background-color: black;
+    color: white;
+    transition: 0.5s;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+  }
+}

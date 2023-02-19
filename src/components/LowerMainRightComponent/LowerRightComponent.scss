@@ -1,0 +1,49 @@
+.highlights {
+  padding-bottom: 1.5em;
+}
+
+.cardContainer {
+  height: 40%;
+  padding-bottom: 30px;
+  .detailCard {
+    min-height: 200px;
+    background-color: white;
+    margin: 0;
+    border: none;
+    border-radius: 25px;
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+      transition: 0.3s;
+    }
+    .card-title {
+      margin: 0;
+      h5 {
+        color: rgb(150, 150, 150);
+        font-size: 1.3em;
+        font-weight: 600;
+        padding: 0.5em 1em;
+        margin: 0;
+      }
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      padding-left: 30px;
+      padding-right: 30px;
+      padding-top: 0;
+
+      p {
+        font-size: 1.1em;
+        margin: 0;
+      }
+
+      h2 {
+        font-weight: 500;
+      }
+    }
+  }
+}

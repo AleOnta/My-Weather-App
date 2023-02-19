@@ -47,9 +47,9 @@ const MainLeftComponent = () => {
   }, [locationCoordinates]);
 
   return (
-    <Col xs={3} className="mainLeftContainer ">
-      <Row>
-        <Col xs={12} className="d-flex justify-content-around align-items-center">
+    <Col xs={3} className="mainLeftContainer">
+      <Row className="h-100 pt-5 pb-1 px-4">
+        <Col xs={12} className="d-flex justify-content-around align-items-center inputSection">
           <BsSearch
             className="inputIcon"
             onClick={() => {
@@ -60,7 +60,7 @@ const MainLeftComponent = () => {
               setLoad(true);
             }}
           />
-          <InputGroup className="mx-1 inputContainer">
+          <InputGroup className="px-1 inputContainer">
             <FormControl
               placeholder="Search for places..."
               aria-label="Search for places..."
@@ -84,7 +84,7 @@ const MainLeftComponent = () => {
         <Col xs={12} className="weatherTextContainer">
           <Row>
             <Col xs={12}>{!ready && <h3 className="degree">{Math.round(dailyWeather.main.temp)}°</h3>}</Col>
-            <Col xs={12} className="mb-4">
+            <Col xs={12} className="pb-4 pt-3">
               <h4>
                 Today, <span>13:00</span>
               </h4>
@@ -94,19 +94,37 @@ const MainLeftComponent = () => {
         </Col>
         <Col xs={12}>
           <Row>
-            <Col xs={12} className="d-flex align-items-center my-4">
-              <img src="" alt="weather" />
-              {dailyWeather.weather && <p className="description m-0 ml-2">{dailyWeather.weather[0].description}</p>}
+            <Col xs={12} className="d-flex align-items-center pt-4">
+              {dailyWeather.weather && (
+                <>
+                  <img
+                    src={"http://openweathermap.org/img/wn/" + dailyWeather.weather[0].icon + ".png"}
+                    alt="weather"
+                  />
+                  <p className="description m-0 pl-2">{dailyWeather.weather[0].description}</p>
+                </>
+              )}
             </Col>
-            <Col xs={12} className="d-flex align-items-center mt-2 mb-3">
-              <img src="" alt="weather" />
-              {dailyWeather.weather && <p className="description m-0 ml-2 ">{dailyWeather.weather[0].main}</p>}
+            <Col xs={12} className="d-flex align-items-center pt-2 pb-3">
+              {dailyWeather.weather && (
+                <>
+                  <img
+                    src={"http://openweathermap.org/img/wn/" + dailyWeather.weather[0].icon + ".png"}
+                    alt="weather"
+                  />
+                  <p className="description m-0 pl-2">{dailyWeather.weather[0].main}</p>
+                </>
+              )}
             </Col>
           </Row>
         </Col>
-        <Col xs={12}>
-          <div className="currentCityContainer p-3 mt-5 d-flex align-items-center justify-content-center">
-            {!ready && <h4>Location: {dailyWeather.name}</h4>}
+        <Col xs={12} className="py-4">
+          <div className="currentCityContainer px-3 d-flex align-items-center justify-content-center">
+            {!ready && (
+              <h4>
+                Location: <span className="currentLocation">{dailyWeather.name}</span>
+              </h4>
+            )}
           </div>
         </Col>
       </Row>

@@ -1,7 +1,7 @@
-import { Button, Col, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import WeatherDayComponent from "./WeatherDayComponent";
+import WeatherDayComponent from "../WeatherDayComponent/WeatherDayComponent";
 
 const UpperMainRightComponent = () => {
   const weeklyWeather = useSelector((state) => state.weather.weatherWeeklyResult);
@@ -48,17 +48,17 @@ const UpperMainRightComponent = () => {
 
   return (
     <>
-      <Col xs={12} className="d-flex justify-content-between align-items-center">
+      <Col xs={12} className="d-flex justify-content-between align-items-center pt-5 px-5 upperRightButtons">
         <div>
-          <Button className="dayOrWeek">Today</Button>
-          <Button className="dayOrWeek ml-3">Week</Button>
+          <button className="dayOrWeek">Today</button>
+          <button className="dayOrWeek pl-3">Week</button>
         </div>
         <div>
-          <Button className="celsiusOrFarheneit mr-3">C°</Button>
-          <Button className="celsiusOrFarheneit">F°</Button>
+          <button className="celsiusOrFarheneit mr-3">°C</button>
+          <button className="celsiusOrFarheneit">°F</button>
         </div>
       </Col>
-      <Col xs={12} className="my-5">
+      <Col xs={12} className="py-4 px-5 upperRightCards">
         <Row>
           {weeklyWeather.length > 0
             ? weeklyWeather.map((e, i) => {

@@ -1,0 +1,65 @@
+.mainLeftContainer {
+  background-color: white;
+  border-radius: 25px 0 0 25px;
+
+  .inputSection {
+    border: 1px solid rgba(211, 211, 211, 0.76);
+    border-radius: 15px;
+  }
+
+  .inputContainer {
+    color: black;
+    .inputSearch {
+      width: 70%;
+      border: none;
+      &:focus {
+        border: none;
+        animation: none;
+        transform: none;
+      }
+    }
+  }
+
+  .inputIcon {
+    transform: scale(1.33);
+    transition: 0.2s;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.7);
+      transition: 0.2s;
+    }
+  }
+
+  .currentWeatherPhoto {
+    width: 90%;
+    height: 90%;
+  }
+
+  .weatherTextContainer {
+    .degree {
+      font-size: 6em;
+      font-weight: 400;
+    }
+
+    h4 span {
+      color: lightgray;
+    }
+  }
+
+  .description {
+    font-weight: 700;
+  }
+
+  .currentCityContainer {
+    background-color: rgb(245, 245, 245);
+    border-radius: 25px;
+    width: 100%;
+    height: 100px;
+
+    .currentLocation {
+      height: 100%;
+      font-weight: 400;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.dayCard {
+  background-color: white;
+
+  border-radius: 25px;
+  transition: 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+  }
+}
