@@ -48,7 +48,7 @@ const UpperMainRightComponent = () => {
 
   return (
     <>
-      <Col xs={12} className="d-flex justify-content-between align-items-center pt-5 px-5 upperRightButtons">
+      <Col xs={12} className="d-flex justify-content-between align-items-center pt-5 px-3 px-md-5 upperRightButtons">
         <div>
           <button className="dayOrWeek">Today</button>
           <button className="dayOrWeek pl-3">Week</button>
@@ -58,7 +58,7 @@ const UpperMainRightComponent = () => {
           <button className="celsiusOrFarheneit">°F</button>
         </div>
       </Col>
-      <Col xs={12} className="py-5 py-md-4 px-5 upperRightCards">
+      <Col xs={12} className="py-5 py-md-4 px-3 px-md-5 upperRightCards">
         <Row>
           {weeklyWeather.length > 0
             ? weeklyWeather.map((e, i) => {

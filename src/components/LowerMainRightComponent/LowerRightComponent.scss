@@ -30,6 +30,9 @@
     @media screen and (max-width: 767px) {
       height: 175px;
     }
+    @media screen and (max-width: 450px) {
+      height: 125px;
+    }
 
     &:hover {
       transform: scale(1.05);
@@ -58,6 +61,9 @@
         }
         @media screen and (max-width: 767px) {
           font-size: 0.9em;
+        }
+        @media screen and (max-width: 450px) {
+          font-size: 0.7em;
         }
       }
     }
@@ -88,6 +94,9 @@
         @media screen and (max-width: 992px) {
           font-size: 0.8em;
         }
+        @media screen and (max-width: 450px) {
+          font-size: 0.7em;
+        }
       }
 
       h2 {
@@ -104,6 +113,9 @@
         }
         @media screen and (max-width: 992px) {
           font-size: 1em;
+        }
+        @media screen and (max-width: 450px) {
+          font-size: 0.8em;
         }
       }
 

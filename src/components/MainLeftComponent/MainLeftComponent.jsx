@@ -2,6 +2,7 @@ import { Col, Row, InputGroup, FormControl } from "react-bootstrap";
 import { BsSearch, BsGeoFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+import Logo from "../../assets/img/logo.svg";
 
 const MainLeftComponent = () => {
   const ready = useSelector((state) => state.isLoading);
@@ -48,9 +49,10 @@ const MainLeftComponent = () => {
 
   return (
     <Col xs={12} md={3} className="mainLeftContainer">
-      <Row className="h-md-100 pt-5 pb-1 px-5 px-md-0 px-xl-4">
-        <Col xs={12}>
-          <h1 className="pb-4 d-md-none">My Weather App</h1>
+      <Row className="h-md-100 pt-5 pb-1 px-3 px-md-0 px-xl-4">
+        <Col xs={12} className="d-flex align-items-center justify-content-around pb-4 d-md-none">
+          <img src={Logo} alt="weather app logo" style={{ width: 25 + "%" }} />
+          <h1>My Weather App</h1>
         </Col>
         <Col xs={12} className="d-flex justify-content-around align-items-center inputSection">
           <BsSearch
@@ -75,7 +77,7 @@ const MainLeftComponent = () => {
           </InputGroup>
           <BsGeoFill className="inputIcon d-none d-xl-block" />
         </Col>
-        <Col xs={6} md={12} className="pt-4 pt-md-0">
+        <Col xs={6} md={12} className="pt-4 pt-md-0 d-flex align-items-center">
           {dailyWeather.weather && (
             <img
               src={"http://openweathermap.org/img/wn/" + dailyWeather.weather[0].icon + "@4x.png"}
@@ -87,7 +89,7 @@ const MainLeftComponent = () => {
         <Col xs={6} md={12} className="weatherTextContainer d-flex align-items-center pt-4 pt-md-0">
           <Row>
             <Col xs={12}>{!ready && <h3 className="degree">{Math.round(dailyWeather.main.temp)}°</h3>}</Col>
-            <Col xs={12} className="pb-4 pt-3">
+            <Col xs={12} className=" p-0 pb-4 pt-3">
               <h4>
                 Today, <span>13:00</span>
               </h4>

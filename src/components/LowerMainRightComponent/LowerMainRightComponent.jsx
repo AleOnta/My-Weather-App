@@ -34,10 +34,10 @@ const LowerMainRightComponent = () => {
 
   return (
     <>
-      <Col xs={12} className="highlights px-5 d-flex align-items-center">
+      <Col xs={12} className="highlights px-3 px-md-5 d-flex align-items-center">
         <h3 className="mb-0">Today's Highlights</h3>
       </Col>
-      <Col xs={12} className="lowerCards px-5 pb-5 pb-md-2">
+      <Col xs={12} className="lowerCards px-3 px-md-5 pb-5 pb-md-2">
         <Row xs={2} md={3} className="lowerCardsRow">
           <Col className="cardContainer">
             <Card className="detailCard temperature ">
