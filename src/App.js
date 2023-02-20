@@ -6,7 +6,7 @@ import WeatherAppComponent from "./components/WeatherAppComponent/WeatherAppComp
 function App() {
   return (
     <Container fluid className="d-flex justify-content-center align-items-center p-5  fullContainer">
-      <Row className="m-0 h-100">
+      <Row className="m-0">
         <Col xs={12} className="mainContainer p-0">
           <WeatherAppComponent />
         </Col>

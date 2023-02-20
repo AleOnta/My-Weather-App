@@ -58,7 +58,7 @@ const UpperMainRightComponent = () => {
           <button className="celsiusOrFarheneit">°F</button>
         </div>
       </Col>
-      <Col xs={12} className="py-4 px-5 upperRightCards">
+      <Col xs={12} className="py-5 py-md-4 px-5 upperRightCards">
         <Row>
           {weeklyWeather.length > 0
             ? weeklyWeather.map((e, i) => {

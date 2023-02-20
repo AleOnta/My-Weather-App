@@ -41,7 +41,7 @@ const WeatherAppComponent = () => {
   }, [geoParam]);
 
   return (
-    <Row className="h-100 m-0">
+    <Row className="m-0">
       <MainLeftComponent />
       <MainRightComponent />
     </Row>

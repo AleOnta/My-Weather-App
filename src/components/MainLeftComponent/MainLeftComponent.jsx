@@ -48,7 +48,10 @@ const MainLeftComponent = () => {
 
   return (
     <Col xs={12} md={3} className="mainLeftContainer">
-      <Row className="h-100 pt-5 pb-1 px-5 px-md-0 px-xl-4">
+      <Row className="h-md-100 pt-5 pb-1 px-5 px-md-0 px-xl-4">
+        <Col xs={12}>
+          <h1 className="pb-4 d-md-none">My Weather App</h1>
+        </Col>
         <Col xs={12} className="d-flex justify-content-around align-items-center inputSection">
           <BsSearch
             className="inputIcon"
