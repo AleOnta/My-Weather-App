@@ -2,7 +2,6 @@ import { Col, Row } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import WeatherDayComponent from "../WeatherDayComponent/WeatherDayComponent";
-import { compareAsc } from "date-fns";
 
 const UpperMainRightComponent = () => {
   const weeklyWeather = useSelector(

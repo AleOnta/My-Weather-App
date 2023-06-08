@@ -50,11 +50,17 @@ const MainLeftComponent = () => {
   return (
     <Col xs={12} md={3} className="mainLeftContainer">
       <Row className="h-md-100 pt-5 pb-1 px-3 px-md-0 px-xl-4">
-        <Col xs={12} className="d-flex align-items-center justify-content-around pb-4 d-md-none">
+        <Col
+          xs={12}
+          className="d-flex align-items-center justify-content-around pb-4 d-md-none"
+        >
           <img src={Logo} alt="weather app logo" style={{ width: 25 + "%" }} />
           <h1>My Weather App</h1>
         </Col>
-        <Col xs={12} className="d-flex justify-content-around align-items-center inputSection">
+        <Col
+          xs={12}
+          className="d-flex justify-content-around align-items-center inputSection"
+        >
           <BsSearch
             className="inputIcon"
             onClick={() => {
@@ -72,6 +78,13 @@ const MainLeftComponent = () => {
               aria-describedby="basic-addon1"
               className="inputSearch"
               value={search}
+              onKeyDown={(e) => {
+                e.key === "Enter" &&
+                  dispatch({
+                    type: "ADD_LOCATION",
+                    payload: search,
+                  });
+              }}
               onChange={(e) => setSearch(e.target.value)}
             />
           </InputGroup>
@@ -80,15 +93,29 @@ const MainLeftComponent = () => {
         <Col xs={6} md={12} className="pt-4 pt-md-0 d-flex align-items-center">
           {dailyWeather.weather && (
             <img
-              src={"http://openweathermap.org/img/wn/" + dailyWeather.weather[0].icon + "@4x.png"}
+              src={
+                "http://openweathermap.org/img/wn/" +
+                dailyWeather.weather[0].icon +
+                "@4x.png"
+              }
               alt="weather"
               style={{ width: 80 + "%" }}
             />
           )}
         </Col>
-        <Col xs={6} md={12} className="weatherTextContainer d-flex align-items-center pt-4 pt-md-0">
+        <Col
+          xs={6}
+          md={12}
+          className="weatherTextContainer d-flex align-items-center pt-4 pt-md-0"
+        >
           <Row>
-            <Col xs={12}>{!ready && <h3 className="degree">{Math.round(dailyWeather.main.temp)}°</h3>}</Col>
+            <Col xs={12}>
+              {!ready && (
+                <h3 className="degree">
+                  {Math.round(dailyWeather.main.temp)}°
+                </h3>
+              )}
+            </Col>
             <Col xs={12} className=" p-0 pb-4 pt-3">
               <h4>
                 Today, <span>13:00</span>
@@ -105,11 +132,17 @@ const MainLeftComponent = () => {
               {dailyWeather.weather && (
                 <>
                   <img
-                    src={"http://openweathermap.org/img/wn/" + dailyWeather.weather[0].icon + ".png"}
+                    src={
+                      "http://openweathermap.org/img/wn/" +
+                      dailyWeather.weather[0].icon +
+                      ".png"
+                    }
                     alt="weather"
                     className="currentWeatherIcon"
                   />
-                  <p className="description m-0 pl-2">{dailyWeather.weather[0].description}</p>
+                  <p className="description m-0 pl-2">
+                    {dailyWeather.weather[0].description}
+                  </p>
                 </>
               )}
             </Col>
@@ -117,11 +150,17 @@ const MainLeftComponent = () => {
               {dailyWeather.weather && (
                 <>
                   <img
-                    src={"http://openweathermap.org/img/wn/" + dailyWeather.weather[0].icon + ".png"}
+                    src={
+                      "http://openweathermap.org/img/wn/" +
+                      dailyWeather.weather[0].icon +
+                      ".png"
+                    }
                     alt="weather"
                     className="currentWeatherIcon"
                   />
-                  <p className="description m-0 pl-2">{dailyWeather.weather[0].main}</p>
+                  <p className="description m-0 pl-2">
+                    {dailyWeather.weather[0].main}
+                  </p>
                 </>
               )}
             </Col>
@@ -131,7 +170,8 @@ const MainLeftComponent = () => {
           <div className="currentCityContainer px-3 d-flex align-items-center justify-content-center">
             {!ready && (
               <h4>
-                Location: <span className="currentLocation">{dailyWeather.name}</span>
+                Location:{" "}
+                <span className="currentLocation">{dailyWeather.name}</span>
               </h4>
             )}
           </div>
