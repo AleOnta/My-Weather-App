@@ -2,9 +2,12 @@ import { Col, Row } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import WeatherDayComponent from "../WeatherDayComponent/WeatherDayComponent";
+import { compareAsc } from "date-fns";
 
 const UpperMainRightComponent = () => {
-  const weeklyWeather = useSelector((state) => state.weather.weatherWeeklyResult);
+  const weeklyWeather = useSelector(
+    (state) => state.weather.weatherWeeklyResult
+  );
   const locationCoordinates = useSelector((state) => state.weather.geoResult);
   const isLoading = useSelector((state) => state.isLoading);
   const dispatch = useDispatch();
@@ -16,7 +19,9 @@ const UpperMainRightComponent = () => {
       );
       if (response.ok) {
         const data = await response.json();
-        const fixedData = data.list.map((e) => ({ ...e, dt: epochToTime(e.dt) })).filter((e) => e.dt === "16:0");
+        const fixedData = data.list
+          .map((e) => ({ ...e, dt: epochToTime(e.dt) }))
+          .filter((e) => e.dt === "17:0" || e.dt === "16:0");
         setWeeklyWeather(fixedData);
       } else {
         alert("errore nella response della weekly", response);
@@ -48,7 +53,10 @@ const UpperMainRightComponent = () => {
 
   return (
     <>
-      <Col xs={12} className="d-flex justify-content-between align-items-center pt-5 px-3 px-md-5 upperRightButtons">
+      <Col
+        xs={12}
+        className="d-flex justify-content-between align-items-center pt-5 px-3 px-md-5 upperRightButtons"
+      >
         <div>
           <button className="dayOrWeek">Today</button>
           <button className="dayOrWeek pl-3">Week</button>
