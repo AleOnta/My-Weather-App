@@ -1,14 +1,14 @@
-import { Col, Row, InputGroup, FormControl } from "react-bootstrap";
-import { BsSearch } from "react-icons/bs";
+import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Logo from "../../assets/img/logo.svg";
+import { OffCanvasComponent } from "../SearchOffCanvasComponent/OffCanvasComponent";
+import { setLoad, setWeather } from "../../redux/actions";
 
 const MainLeftComponent = () => {
   const ready = useSelector((state) => state.isLoading);
   const dailyWeather = useSelector((state) => state.weather.weatherDailyResult);
   const locationCoordinates = useSelector((state) => state.weather.geoResult);
-  const [search, setSearch] = useState("");
   const dispatch = useDispatch();
 
   const fetchWeather = async () => {
@@ -18,8 +18,8 @@ const MainLeftComponent = () => {
       );
       if (response.ok) {
         const data = await response.json();
-        setWeather(data);
-        setLoad(false);
+        dispatch(setWeather(data));
+        dispatch(setLoad(false));
       } else {
         alert("errore nella response del meteo", response);
       }
@@ -28,181 +28,155 @@ const MainLeftComponent = () => {
     }
   };
 
-  const displayOptions = async (inputString) => {
-    try {
-      const response = await fetch(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${inputString}&limit=5&appid=a07c515bd5eb284d7c76a2d03970002b`
-      );
-      if (response.ok) {
-        const data = await response.json();
-        data.forEach((element) => {
-          console.log(
-            element.name,
-            "- (",
-            element.state,
-            element.country + ")"
-          );
-        });
-      } else {
-        alert("errore nella response della fetch", response);
-      }
-    } catch (error) {
-      alert("errore fatale", error);
-    }
-  };
-
-  const setLoad = (bool) => {
-    dispatch({
-      type: "SET_LOAD",
-      payload: bool,
-    });
-  };
-
-  const setWeather = (value) => {
-    dispatch({
-      type: "ADD_WEATHER_RESULT",
-      payload: value,
-    });
-  };
-
   useEffect(() => {
     fetchWeather();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locationCoordinates]);
 
   return (
-    <Col xs={12} md={3} className="mainLeftContainer p-0">
-      <Row className="h-md-100 pt-5 pb-1 px-3 px-md-0 px-xl-4">
-        <Col
-          xs={12}
-          className="d-flex align-items-center justify-content-around pb-4 d-md-none"
-        >
-          <img src={Logo} alt="weather app logo" style={{ width: 25 + "%" }} />
-          <h1>My Weather App</h1>
-        </Col>
-        <Col
-          xs={12}
-          className="d-flex justify-content-around align-items-center inputSection p-0"
-        >
-          <InputGroup className="inputContainer">
-            <InputGroup.Text id="basic-addon1" className="searchIcon">
-              <BsSearch
-                className="inputIcon"
-                onClick={() => {
-                  dispatch({
-                    type: "ADD_LOCATION",
-                    payload: search,
-                  });
-                  setLoad(true);
-                }}
-              />
-            </InputGroup.Text>
-            <FormControl
-              placeholder="Search for places..."
-              aria-label="Search for places..."
-              aria-describedby="basic-addon1"
-              className="inputSearch p-1"
-              value={search}
-              onKeyDown={(e) => {
-                search !== "" && displayOptions(search);
-                e.key === "Enter" &&
-                  dispatch({
-                    type: "ADD_LOCATION",
-                    payload: search,
-                  });
-              }}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </InputGroup>
-        </Col>
-        <Col xs={6} md={12} className="pt-4 pt-md-0 d-flex align-items-center">
-          {dailyWeather.weather && (
+    <>
+      <Col xs={12} md={3} className="mainLeftContainer p-0">
+        <Row className="h-md-100 pt-5 pb-1 px-3 px-md-0 px-xl-4">
+          <Col
+            xs={12}
+            className="d-flex align-items-center justify-content-around pb-4 d-md-none"
+          >
             <img
-              src={
-                "http://openweathermap.org/img/wn/" +
-                dailyWeather.weather[0].icon +
-                "@4x.png"
-              }
-              alt="weather"
-              style={{ width: 80 + "%" }}
+              src={Logo}
+              alt="weather app logo"
+              style={{ width: 25 + "%" }}
             />
-          )}
-        </Col>
-        <Col
-          xs={6}
-          md={12}
-          className="weatherTextContainer d-flex align-items-center pt-4 pt-md-0"
-        >
-          <Row>
-            <Col xs={12}>
-              {!ready && (
-                <h3 className="degree">
-                  {Math.round(dailyWeather.main.temp)}°
-                </h3>
-              )}
-            </Col>
-            <Col xs={12} className=" p-0 pb-4 pt-3">
-              <h4>
-                Today, <span>13:00</span>
-              </h4>
-            </Col>
-          </Row>
-          <hr className="d-none d-md-block" />
-        </Col>
-
-        <Col xs={12}>
-          <hr className="d-md-none" />
-          <Row>
-            <Col xs={12} className="d-flex align-items-center pt-4">
-              {dailyWeather.weather && (
-                <>
-                  <img
-                    src={
-                      "http://openweathermap.org/img/wn/" +
-                      dailyWeather.weather[0].icon +
-                      ".png"
-                    }
-                    alt="weather"
-                    className="currentWeatherIcon"
-                  />
-                  <p className="description m-0 pl-2">
-                    {dailyWeather.weather[0].description}
-                  </p>
-                </>
-              )}
-            </Col>
-            <Col xs={12} className="d-flex align-items-center pt-2 pb-3">
-              {dailyWeather.weather && (
-                <>
-                  <img
-                    src={
-                      "http://openweathermap.org/img/wn/" +
-                      dailyWeather.weather[0].icon +
-                      ".png"
-                    }
-                    alt="weather"
-                    className="currentWeatherIcon"
-                  />
-                  <p className="description m-0 pl-2">
-                    {dailyWeather.weather[0].main}
-                  </p>
-                </>
-              )}
-            </Col>
-          </Row>
-        </Col>
-        <Col xs={12} className="py-4">
-          <div className="currentCityContainer px-3 d-flex align-items-center justify-content-center">
-            {!ready && (
-              <h4>
-                Location:{" "}
-                <span className="currentLocation">{dailyWeather.name}</span>
-              </h4>
+            <h1>My Weather App</h1>
+          </Col>
+          <Col
+            xs={12}
+            className="d-flex justify-content-around align-items-center inputSection p-0"
+          >
+            <OffCanvasComponent />
+            {/* <InputGroup className="inputContainer">
+              <InputGroup.Text id="basic-addon1" className="searchIcon">
+                <BsSearch
+                  className="inputIcon"
+                  onClick={() => {
+                    dispatch({
+                      type: "ADD_LOCATION",
+                      payload: search,
+                    });
+                    setLoad(true);
+                  }}
+                />
+              </InputGroup.Text>
+              <FormControl
+                placeholder="Search for places..."
+                aria-label="Search for places..."
+                aria-describedby="basic-addon1"
+                className="inputSearch p-1"
+                value={search}
+                onKeyDown={(e) => {
+                  search !== "" && displayOptions(search);
+                  e.key === "Enter" &&
+                    dispatch({
+                      type: "ADD_LOCATION",
+                      payload: search,
+                    });
+                }}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </InputGroup> */}
+          </Col>
+          <Col
+            xs={6}
+            md={12}
+            className="pt-4 pt-md-0 d-flex align-items-center"
+          >
+            {dailyWeather.weather && (
+              <img
+                src={
+                  "http://openweathermap.org/img/wn/" +
+                  dailyWeather.weather[0].icon +
+                  "@4x.png"
+                }
+                alt="weather"
+                style={{ width: 80 + "%" }}
+              />
             )}
-          </div>
-        </Col>
-      </Row>
-    </Col>
+          </Col>
+          <Col
+            xs={6}
+            md={12}
+            className="weatherTextContainer d-flex align-items-center pt-4 pt-md-0"
+          >
+            <Row>
+              <Col xs={12}>
+                {!ready && (
+                  <h3 className="degree">
+                    {Math.round(dailyWeather.main.temp)}°
+                  </h3>
+                )}
+              </Col>
+              <Col xs={12} className=" p-0 pb-4 pt-3">
+                <h4>
+                  Today, <span>13:00</span>
+                </h4>
+              </Col>
+            </Row>
+            <hr className="d-none d-md-block" />
+          </Col>
+
+          <Col xs={12}>
+            <hr className="d-md-none" />
+            <Row>
+              <Col xs={12} className="d-flex align-items-center pt-4">
+                {dailyWeather.weather && (
+                  <>
+                    <img
+                      src={
+                        "http://openweathermap.org/img/wn/" +
+                        dailyWeather.weather[0].icon +
+                        ".png"
+                      }
+                      alt="weather"
+                      className="currentWeatherIcon"
+                    />
+                    <p className="description m-0 pl-2">
+                      {dailyWeather.weather[0].description}
+                    </p>
+                  </>
+                )}
+              </Col>
+              <Col xs={12} className="d-flex align-items-center pt-2 pb-3">
+                {dailyWeather.weather && (
+                  <>
+                    <img
+                      src={
+                        "http://openweathermap.org/img/wn/" +
+                        dailyWeather.weather[0].icon +
+                        ".png"
+                      }
+                      alt="weather"
+                      className="currentWeatherIcon"
+                    />
+                    <p className="description m-0 pl-2">
+                      {dailyWeather.weather[0].main}
+                    </p>
+                  </>
+                )}
+              </Col>
+            </Row>
+          </Col>
+          <Col xs={12} className="py-4">
+            <div className="currentCityContainer px-3 d-flex align-items-center justify-content-center">
+              {!ready && (
+                <h4>
+                  Location:{" "}
+                  <span className="currentLocation">{dailyWeather.name}</span>
+                </h4>
+              )}
+            </div>
+          </Col>
+        </Row>
+      </Col>
+    </>
   );
 };
 
