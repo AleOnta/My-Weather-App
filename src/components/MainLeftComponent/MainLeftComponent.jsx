@@ -1,5 +1,5 @@
 import { Col, Row, InputGroup, FormControl } from "react-bootstrap";
-import { BsSearch, BsGeoFill } from "react-icons/bs";
+import { BsSearch } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import Logo from "../../assets/img/logo.svg";
@@ -28,6 +28,29 @@ const MainLeftComponent = () => {
     }
   };
 
+  const displayOptions = async (inputString) => {
+    try {
+      const response = await fetch(
+        `http://api.openweathermap.org/geo/1.0/direct?q=${inputString}&limit=5&appid=a07c515bd5eb284d7c76a2d03970002b`
+      );
+      if (response.ok) {
+        const data = await response.json();
+        data.forEach((element) => {
+          console.log(
+            element.name,
+            "- (",
+            element.state,
+            element.country + ")"
+          );
+        });
+      } else {
+        alert("errore nella response della fetch", response);
+      }
+    } catch (error) {
+      alert("errore fatale", error);
+    }
+  };
+
   const setLoad = (bool) => {
     dispatch({
       type: "SET_LOAD",
@@ -48,7 +71,7 @@ const MainLeftComponent = () => {
   }, [locationCoordinates]);
 
   return (
-    <Col xs={12} md={3} className="mainLeftContainer">
+    <Col xs={12} md={3} className="mainLeftContainer p-0">
       <Row className="h-md-100 pt-5 pb-1 px-3 px-md-0 px-xl-4">
         <Col
           xs={12}
@@ -59,26 +82,29 @@ const MainLeftComponent = () => {
         </Col>
         <Col
           xs={12}
-          className="d-flex justify-content-around align-items-center inputSection"
+          className="d-flex justify-content-around align-items-center inputSection p-0"
         >
-          <BsSearch
-            className="inputIcon"
-            onClick={() => {
-              dispatch({
-                type: "ADD_LOCATION",
-                payload: search,
-              });
-              setLoad(true);
-            }}
-          />
-          <InputGroup className="px-1 inputContainer">
+          <InputGroup className="inputContainer">
+            <InputGroup.Text id="basic-addon1" className="searchIcon">
+              <BsSearch
+                className="inputIcon"
+                onClick={() => {
+                  dispatch({
+                    type: "ADD_LOCATION",
+                    payload: search,
+                  });
+                  setLoad(true);
+                }}
+              />
+            </InputGroup.Text>
             <FormControl
               placeholder="Search for places..."
               aria-label="Search for places..."
               aria-describedby="basic-addon1"
-              className="inputSearch"
+              className="inputSearch p-1"
               value={search}
               onKeyDown={(e) => {
+                search !== "" && displayOptions(search);
                 e.key === "Enter" &&
                   dispatch({
                     type: "ADD_LOCATION",
@@ -88,7 +114,6 @@ const MainLeftComponent = () => {
               onChange={(e) => setSearch(e.target.value)}
             />
           </InputGroup>
-          <BsGeoFill className="inputIcon d-none d-xl-block" />
         </Col>
         <Col xs={6} md={12} className="pt-4 pt-md-0 d-flex align-items-center">
           {dailyWeather.weather && (

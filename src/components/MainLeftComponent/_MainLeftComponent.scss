@@ -6,10 +6,14 @@
   }
 
   h1 {
-    font-size: 1.2em;
+    font-size: 1em;
     transition: 0.2s;
+
+    @media screen and (min-width: 340px) {
+      font-size: 1.2em;
+    }
     @media screen and (min-width: 400px) {
-      font-size: 1.6em;
+      font-size: 1.5em;
     }
     @media screen and (min-width: 500px) {
       font-size: 2em;
@@ -20,9 +24,6 @@
   }
 
   .inputSection {
-    border: 1px solid rgba(211, 211, 211, 0.76);
-    border-radius: 15px;
-    height: 50px;
     transition: 0.2s;
     @media screen and (max-width: 900px) {
       height: 40px;
@@ -33,33 +34,30 @@
     color: black;
     .inputSearch {
       width: 70%;
-      border: none;
+      font-size: 0.8em;
       transition: 0.2s;
       &:focus {
-        border: none;
         animation: none;
         transform: none;
+        box-shadow: none;
+        transition: 0.2s;
+        -webkit-box-shadow: 0px 11px 20px -15px rgba(111, 0, 255, 1);
+        -moz-box-shadow: 0px 11px 20px -15px rgba(111, 0, 255, 1);
+        box-shadow: 0px 11px 20px -15px rgba(111, 0, 255, 1);
       }
 
-      @media screen and (max-width: 1050px) {
-        font-size: 0.8em;
-      }
-      @media screen and (max-width: 950px) {
-        font-size: 0.6em;
-      }
-      @media screen and (max-width: 767px) {
-        font-size: 1em;
+      @media screen and (min-width: 476px) {
       }
     }
   }
 
   .inputIcon {
-    transform: scale(1.33);
+    transform: scale(1);
     transition: 0.2s;
     cursor: pointer;
 
     &:hover {
-      transform: scale(1.7);
+      transform: scale(1.3);
       transition: 0.2s;
     }
     @media screen and (max-width: 1400px) {
@@ -71,6 +69,12 @@
     @media screen and (max-width: 767px) {
       font-size: 1em;
     }
+  }
+
+  .searchIcon {
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
   .currentWeatherPhoto {

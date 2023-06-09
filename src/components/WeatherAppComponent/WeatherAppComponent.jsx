@@ -11,7 +11,7 @@ const WeatherAppComponent = () => {
   const fetchLocation = async (location) => {
     try {
       const response = await fetch(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=a07c515bd5eb284d7c76a2d03970002b`
+        `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=6&appid=a07c515bd5eb284d7c76a2d03970002b`
       );
       if (response.ok) {
         const data = await response.json();
