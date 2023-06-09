@@ -1,3 +1,4 @@
+@import "~bootstrap/scss/bootstrap";
 @import "./components/MainLeftComponent/MainLeftComponent";
 @import "./components/UpperMainRightComponent/UpperMainRightComponent.scss";
 @import "./components/MainRightComponent/MainRightComponent.scss";
@@ -19,8 +20,18 @@ body {
   margin: 0;
   padding: 0;
   background: #93b0d0;
-  background: -moz-linear-gradient(-45deg, #93b0d0 0%, #dbcffb 50%, #ffdfa2 100%);
-  background: -webkit-linear-gradient(-45deg, #93b0d0 0%, #dbcffb 50%, #ffdfa2 100%);
+  background: -moz-linear-gradient(
+    -45deg,
+    #93b0d0 0%,
+    #dbcffb 50%,
+    #ffdfa2 100%
+  );
+  background: -webkit-linear-gradient(
+    -45deg,
+    #93b0d0 0%,
+    #dbcffb 50%,
+    #ffdfa2 100%
+  );
   background: linear-gradient(135deg, #93b0d0 0%, #dbcffb 50%, #ffdfa2 100%);
 }
 
