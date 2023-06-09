@@ -1,3 +1,60 @@
 .canvas-locations {
   height: fit-content !important;
+
+  .location-results-list {
+    padding: 0;
+    list-style-type: none;
+
+    .location-result {
+      padding: 10px 15px;
+      border: 1px solid lightgray;
+      margin-top: 30px !important;
+      transition: 0.2s;
+
+      &:hover {
+        cursor: pointer;
+        background-color: rgba(211, 211, 211, 0.534);
+      }
+
+      .location-country {
+        width: 40px;
+        height: 40px;
+        font-weight: 700;
+        color: rgb(75, 75, 75);
+        top: -15px;
+        left: -10px;
+        background: #93b0d0;
+        background: -moz-linear-gradient(
+          -45deg,
+          #93b0d0 0%,
+          #dbcffb 50%,
+          #ffdfa2 100%
+        );
+        background: -webkit-linear-gradient(
+          -45deg,
+          #93b0d0 0%,
+          #dbcffb 50%,
+          #ffdfa2 100%
+        );
+        background: linear-gradient(
+          135deg,
+          #93b0d0 0%,
+          #dbcffb 50%,
+          #ffdfa2 100%
+        );
+      }
+
+      .location-data {
+        font-size: 1.25em;
+        margin-left: 30px !important;
+        .location-name {
+        }
+
+        .location-state {
+          font-size: 0.7em;
+          color: gray;
+        }
+      }
+    }
+  }
 }

@@ -1,3 +1,4 @@
+import "./OffCanvas.scss";
 import { useState } from "react";
 import { Button, Container, FormControl, InputGroup } from "react-bootstrap";
 import Offcanvas from "react-bootstrap/Offcanvas";
@@ -102,15 +103,24 @@ export const OffCanvasComponent = () => {
             </div>
             <div>
               <h5>Results:</h5>
-              <ul>
+              <ul className="location-results-list">
                 {searchResults.length > 0 &&
                   searchResults.map((el) => (
                     <li
+                      className="d-flex aling-items-center location-result position-relative"
                       onClick={() => {
                         fetchLocation(el.name);
+                        hideCanvas();
                       }}
                     >
-                      {el.name + " (" + el.country + ")"}
+                      <span className="position-absolute location-country rounded d-flex align-items-center justify-content-center">
+                        {el.country}
+                      </span>
+                      <p className="location-data w-100 d-flex align-items-center justify-content-between">
+                        <span className="location-name">{el.name}</span>
+
+                        <span className="location-state">{el.state}</span>
+                      </p>
                     </li>
                   ))}
               </ul>
