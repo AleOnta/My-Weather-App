@@ -4,12 +4,12 @@ import { Button, Container, FormControl, InputGroup } from "react-bootstrap";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { BsSearch } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import { addLocation, setCoordinates } from "../../redux/actions";
+import { setCoordinates } from "../../redux/actions";
 
 export const OffCanvasComponent = () => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
-  const [inputSearch, setInputSearch] = useState(null);
+  const [inputSearch, setInputSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
   const showCanvas = () => {
@@ -53,6 +53,9 @@ export const OffCanvasComponent = () => {
       }
     } catch (error) {
       alert("errore fatale", error);
+    } finally {
+      setInputSearch("");
+      setSearchResults([]);
     }
   };
 
@@ -60,7 +63,7 @@ export const OffCanvasComponent = () => {
     <>
       <Button
         variant="secondary"
-        className="d-flex align-items-center p-0"
+        className="d-flex align-items-center p-0 offcanvas-button"
         onClick={() => showCanvas()}
       >
         <BsSearch className="fs-5 mx-3" />
@@ -68,17 +71,25 @@ export const OffCanvasComponent = () => {
       </Button>
       <Offcanvas
         show={show}
-        onHide={() => hideCanvas()}
+        onHide={() => {
+          hideCanvas();
+          setSearchResults([]);
+        }}
         placement="top"
         bsPrefix="offcanvas"
         className="d-flex flex-row justify-content-center canvas-locations"
       >
         <Container>
           <Offcanvas.Header closeButton>
-            <Offcanvas.Title>Search for a location:</Offcanvas.Title>
+            <div className="offcanvas-title-container">
+              <h1 className="offcanvas-title">
+                Location research
+                <span>OFFERED BY MY WEATHER APP</span>
+              </h1>
+            </div>
           </Offcanvas.Header>
           <Offcanvas.Body>
-            <p className="mb-3">
+            <p className="mb-3 offcanvas-info">
               Digit the location in the input below and pick one of the given
               results to see the weather predictions for the next week.
             </p>
@@ -93,16 +104,22 @@ export const OffCanvasComponent = () => {
                   aria-describedby="basic-addon1"
                   className="inputSearch p-1"
                   value={inputSearch}
-                  onKeyDown={(e) => {
+                  autoFocus
+                  onKeyDown={() => {
                     inputSearch !== "" && displayOptions(inputSearch);
-                    e.key === "Enter" && dispatch(addLocation(inputSearch));
                   }}
                   onChange={(e) => setInputSearch(e.target.value)}
                 />
               </InputGroup>
             </div>
             <div>
-              <h5>Results:</h5>
+              <h5
+                className={`location-results-title ${
+                  searchResults.length > 0 && "on-results"
+                }`}
+              >
+                Results:
+              </h5>
               <ul className="location-results-list">
                 {searchResults.length > 0 &&
                   searchResults.map((el) => (

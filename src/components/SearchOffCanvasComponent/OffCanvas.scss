@@ -1,5 +1,73 @@
+.offcanvas-button {
+  background-color: #b5bdc4;
+  border-color: lightgray;
+
+  input {
+    &:focus {
+      box-shadow: none;
+      border-color: gray;
+      border-left: none;
+    }
+  }
+}
+
 .canvas-locations {
   height: fit-content !important;
+
+  h1.offcanvas-title {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    font-weight: 300;
+    font-size: 40px;
+    color: #080808;
+    -webkit-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+
+    span {
+      display: block;
+      font-size: 0.5em;
+      line-height: 1.3;
+    }
+  }
+
+  .offcanvas-title-container h1 {
+    text-transform: capitalize;
+  }
+
+  .offcanvas-title-container h1 span {
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    line-height: 3em;
+    padding-left: 0.25em;
+    color: rgba(0, 0, 0, 0.4);
+    padding-bottom: 5px;
+  }
+
+  .offcanvas-info {
+    font-size: 11px;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: 2px;
+    line-height: 3em;
+    padding-left: 0.25em;
+    color: rgba(0, 0, 0, 0.658);
+  }
+
+  .location-results-title {
+    margin-top: 25px !important;
+    opacity: 0;
+    transition: 0.3s;
+  }
+
+  .location-results-title.on-results {
+    margin-top: 25px !important;
+    opacity: 1;
+    transition: 0.3s;
+  }
 
   .location-results-list {
     padding: 0;
