@@ -1,15 +1,17 @@
 import { Col, Row } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import WeatherDayComponent from "../WeatherDayComponent/WeatherDayComponent";
 
 const UpperMainRightComponent = () => {
+  const dispatch = useDispatch();
   const weeklyWeather = useSelector(
     (state) => state.weather.weatherWeeklyResult
   );
-  const locationCoordinates = useSelector((state) => state.weather.geoResult);
+  const [dayOrWeek, setDayOrWeek] = useState("week");
+  const [celsiusOrFarheneit, setCelsiusOrFarheneit] = useState("celsius");
   const isLoading = useSelector((state) => state.isLoading);
-  const dispatch = useDispatch();
+  const locationCoordinates = useSelector((state) => state.weather.geoResult);
 
   const weeklyFetcher = async () => {
     try {
@@ -57,12 +59,44 @@ const UpperMainRightComponent = () => {
         className="d-flex justify-content-between align-items-center pt-5 px-3 px-md-5 upperRightButtons"
       >
         <div>
-          <button className="dayOrWeek">Today</button>
-          <button className="dayOrWeek pl-3">Week</button>
+          <button
+            className={`${
+              dayOrWeek === "today" && "dayOrWeekSelected"
+            } dayOrWeek`}
+            onClick={() => {
+              setDayOrWeek("today");
+            }}
+          >
+            Today
+          </button>
+          <button
+            className={`${
+              dayOrWeek === "week" && "dayOrWeekSelected"
+            } dayOrWeek pl-3`}
+            onClick={() => {
+              setDayOrWeek("week");
+            }}
+          >
+            Week
+          </button>
         </div>
         <div>
-          <button className="celsiusOrFarheneit mr-3">°C</button>
-          <button className="celsiusOrFarheneit">°F</button>
+          <button
+            className={`${
+              celsiusOrFarheneit === "celsius" && "celsiusOrFarheneitSelected"
+            } celsiusOrFarheneit mr-3`}
+            onClick={() => setCelsiusOrFarheneit("celsius")}
+          >
+            °C
+          </button>
+          <button
+            className={`${
+              celsiusOrFarheneit === "farheneit" && "celsiusOrFarheneitSelected"
+            } celsiusOrFarheneit mr-3`}
+            onClick={() => setCelsiusOrFarheneit("farheneit")}
+          >
+            °F
+          </button>
         </div>
       </Col>
       <Col xs={12} className="py-5 py-md-4 px-3 px-md-5 upperRightCards">
