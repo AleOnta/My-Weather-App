@@ -13,40 +13,47 @@
     font-size: 1.3em;
   }
 
-  &:focus {
-    color: black;
-    text-decoration: underline;
-    transition: 0.5s;
-  }
-
   &:hover {
     transform: scale(1.1);
     transition: 0.3s;
   }
 }
 
+button.dayOrWeekSelected {
+  color: black;
+  text-decoration: underline;
+  transition: 0.5s;
+}
+
 .celsiusOrFarheneit {
-  font-size: 1.3em;
+  width: 40px;
+  height: 40px;
+  font-size: 1em;
+  font-weight: 600;
   background-color: white;
   padding: 5px 10px;
   border: none;
-  border-radius: 30px;
+  border-radius: 50px;
   transition: 0.5s;
 
-  &:focus {
-    background-color: black;
-    color: white;
-    transition: 0.5s;
-  }
-
   &:hover {
-    transform: scale(1.1);
+    background-color: lightgray;
     transition: 0.3s;
   }
 
   @media screen and (max-width: 992px) {
     font-size: 1em;
   }
+}
+
+button.celsiusOrFarheneitSelected {
+  background-color: black;
+  color: white;
+
+  &:hover {
+    background-color: black;
+  }
+  transition: 0.5s;
 }
 
 .upperRightCards {
