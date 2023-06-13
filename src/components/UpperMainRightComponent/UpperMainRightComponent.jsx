@@ -15,6 +15,7 @@ const UpperMainRightComponent = () => {
   );
   const [dayOrWeek, setDayOrWeek] = useState("week");
   const [todayWeather, setTodayWeather] = useState([]);
+  const [dayOrWeekLoading, setDayOrWeekLoading] = useState(false);
   const [celsiusOrFarheneit, setCelsiusOrFarheneit] = useState("celsius");
   const isLoading = useSelector((state) => state.isLoading);
   const locationCoordinates = useSelector((state) => state.weather.geoResult);
@@ -61,6 +62,10 @@ const UpperMainRightComponent = () => {
   }, [dayOrWeek]);
 
   useEffect(() => {
+    setTimeout(() => setDayOrWeekLoading(false), 2000);
+  }, [dayOrWeekLoading]);
+
+  useEffect(() => {
     weeklyFetcher();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
@@ -77,6 +82,7 @@ const UpperMainRightComponent = () => {
               dayOrWeek === "today" && "dayOrWeekSelected"
             } dayOrWeek`}
             onClick={() => {
+              setDayOrWeekLoading(true);
               setDayOrWeek("today");
             }}
           >
@@ -87,6 +93,7 @@ const UpperMainRightComponent = () => {
               dayOrWeek === "week" && "dayOrWeekSelected"
             } dayOrWeek pl-sm-3`}
             onClick={() => {
+              setDayOrWeekLoading(true);
               setDayOrWeek("week");
             }}
           >
@@ -114,16 +121,25 @@ const UpperMainRightComponent = () => {
       </Col>
       <Col xs={12} className="py-5 py-md-4 px-3 px-md-0 upperRightCards">
         <Row>
-          {weeklyWeather.length > 0 &&
-            (dayOrWeek === "today"
-              ? todayWeather.length > 0
-                ? todayWeather.map((el, i) => (
-                    <WeatherHourComponent hourFragment={el} key={i} />
-                  ))
-                : "loader"
-              : weeklyWeather.map((e, i) => {
-                  return <WeatherDayComponent day={e} key={i} />;
-                }))}
+          {weeklyWeather.length > 0 && !dayOrWeekLoading ? (
+            dayOrWeek === "today" ? (
+              todayWeather.map((el, i) => (
+                <WeatherHourComponent hourFragment={el} key={i} />
+              ))
+            ) : (
+              weeklyWeather.map((e, i) => {
+                return <WeatherDayComponent day={e} key={i} />;
+              })
+            )
+          ) : (
+            <div className="d-flex justify-content-around">
+              <span className="loader mx-5"></span>
+              <span className="loader mx-5"></span>
+              <span className="loader mx-5"></span>
+              <span className="loader mx-5"></span>
+              <span className="loader mx-5"></span>
+            </div>
+          )}
         </Row>
       </Col>
     </>
