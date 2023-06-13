@@ -1,10 +1,11 @@
 @import "~bootstrap/scss/bootstrap";
 @import "./components/MainLeftComponent/MainLeftComponent";
-@import "./components/UpperMainRightComponent/UpperMainRightComponent.scss";
 @import "./components/MainRightComponent/MainRightComponent.scss";
 @import "./components/WeatherDayComponent/WeatherDayComponent.scss";
 @import "./components/WeatherHourComponent/WeatherHourComponent.scss";
 @import "./components/LowerMainRightComponent/LowerRightComponent.scss";
+@import "./components/UpperMainRightComponent/UpperMainRightComponent.scss";
+@import "./components/WeatherDayComponent/WheatherHourFocusComponent/WeatherHourFocusComponent.scss";
 
 * {
   box-sizing: border-box;
