@@ -4,14 +4,50 @@
 }
 
 .dayCard {
+  width: 100px;
+  max-width: 170px;
+
   background-color: white;
 
   border-radius: 25px;
   transition: 0.3s;
 
+  @media screen and (min-width: 768px) {
+    width: 86px;
+  }
+
+  @media screen and (min-width: 880px) {
+    width: 102px;
+  }
+
+  @media screen and (min-width: 1001px) {
+    width: 115px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 125px;
+  }
+
+  @media screen and (min-width: 1400px) {
+    width: 155px;
+  }
+
+  @media screen and (min-width: 1600px) {
+    width: 170px;
+  }
+
+  @media screen and (min-width: 1700px) {
+    width: 185px;
+    max-width: 185px;
+  }
+
   &:hover {
     transform: scale(1.05);
     transition: 0.3s;
+  }
+
+  .day-temp-container {
+    width: 70%;
   }
 
   .theDay {
@@ -26,6 +62,7 @@
   }
 
   .dayTemp {
+    font-weight: 600;
     @media screen and (max-width: 1200px) {
       font-size: 0.8em;
     }
