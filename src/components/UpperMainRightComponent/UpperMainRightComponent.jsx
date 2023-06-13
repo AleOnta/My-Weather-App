@@ -85,7 +85,7 @@ const UpperMainRightComponent = () => {
           <button
             className={`${
               dayOrWeek === "week" && "dayOrWeekSelected"
-            } dayOrWeek pl-3`}
+            } dayOrWeek pl-sm-3`}
             onClick={() => {
               setDayOrWeek("week");
             }}
@@ -97,7 +97,7 @@ const UpperMainRightComponent = () => {
           <button
             className={`${
               celsiusOrFarheneit === "celsius" && "celsiusOrFarheneitSelected"
-            } celsiusOrFarheneit mr-3`}
+            } celsiusOrFarheneit mr-1 mr-sm-3`}
             onClick={() => setCelsiusOrFarheneit("celsius")}
           >
             °C
@@ -105,7 +105,7 @@ const UpperMainRightComponent = () => {
           <button
             className={`${
               celsiusOrFarheneit === "farheneit" && "celsiusOrFarheneitSelected"
-            } celsiusOrFarheneit mr-3`}
+            } celsiusOrFarheneit `}
             onClick={() => setCelsiusOrFarheneit("farheneit")}
           >
             °F
@@ -117,8 +117,8 @@ const UpperMainRightComponent = () => {
           {weeklyWeather.length > 0 &&
             (dayOrWeek === "today"
               ? todayWeather.length > 0
-                ? todayWeather.map((el) => (
-                    <WeatherHourComponent hourFragment={el} />
+                ? todayWeather.map((el, i) => (
+                    <WeatherHourComponent hourFragment={el} key={i} />
                   ))
                 : "loader"
               : weeklyWeather.map((e, i) => {

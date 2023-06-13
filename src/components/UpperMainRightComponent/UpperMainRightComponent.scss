@@ -26,8 +26,8 @@ button.dayOrWeekSelected {
 }
 
 .celsiusOrFarheneit {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   font-size: 1em;
   font-weight: 600;
   background-color: white;
@@ -35,6 +35,16 @@ button.dayOrWeekSelected {
   border: none;
   border-radius: 50px;
   transition: 0.5s;
+
+  @media screen and (min-width: 400px) {
+    width: 35px;
+    height: 35px;
+  }
+
+  @media screen and (min-width: 576px) {
+    width: 40px;
+    height: 40px;
+  }
 
   &:hover {
     background-color: lightgray;
