@@ -9,6 +9,7 @@ const initialState = {
     toFetchWeather: "",
     weatherDailyResult: {},
     weatherWeeklyResult: {},
+    allWeekWeather: {},
   },
 };
 
@@ -48,6 +49,15 @@ const mainReducer = (state = initialState, action) => {
         weather: {
           ...state.weather,
           weatherWeeklyResult: action.payload,
+        },
+      };
+    case "ADD_ALL_WEEK_WEATHER":
+      return {
+        ...state,
+        ...state.isLoading,
+        weather: {
+          ...state.weather,
+          allWeekWeather: action.payload,
         },
       };
     case "SET_LOAD":

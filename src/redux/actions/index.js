@@ -3,9 +3,9 @@ export const setLoad = (bool) => ({
   payload: bool,
 });
 
-export const setWeather = (value) => ({
+export const setWeather = (values) => ({
   type: "ADD_WEATHER_RESULT",
-  payload: value,
+  payload: values,
 });
 
 export const addLocation = (input) => ({
@@ -15,5 +15,15 @@ export const addLocation = (input) => ({
 
 export const setCoordinates = (values) => ({
   type: "ADD_COORDINATES",
+  payload: values,
+});
+
+export const setWeeklyWeather = (values) => ({
+  type: "ADD_WEEKLY_RESULT",
+  payload: values,
+});
+
+export const setAllWeekWeather = (values) => ({
+  type: "ADD_ALL_WEEK_WEATHER",
   payload: values,
 });
