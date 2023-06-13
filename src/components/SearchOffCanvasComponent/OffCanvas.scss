@@ -1,11 +1,47 @@
 .offcanvas-button {
-  background-color: #b5bdc4;
+  width: 80%;
+  background: #93b0d0;
+  background: -moz-linear-gradient(
+    -45deg,
+    #93b0d0 0%,
+    #dbcffb 50%,
+    #ffdfa2 100%
+  );
+  background: -webkit-linear-gradient(
+    -45deg,
+    #93b0d0 0%,
+    #dbcffb 50%,
+    #ffdfa2 100%
+  );
+  background: linear-gradient(135deg, #93b0d0 0%, #dbcffb 50%, #ffdfa2 100%);
   border-color: lightgray;
+
+  @media screen and (min-width: 768px) {
+    width: 98%;
+
+    .form-control {
+      font-size: 0.7em;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 80%;
+  }
+
+  @media screen and (min-width: 992px) {
+    .form-control {
+      font-size: 0.9em;
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+    width: 90%;
+  }
 
   input {
     &:focus {
       box-shadow: none;
-      border-color: gray;
+      border-color: rgb(148, 148, 148);
       border-left: none;
     }
   }

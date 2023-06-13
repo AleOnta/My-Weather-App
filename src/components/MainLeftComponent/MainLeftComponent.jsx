@@ -53,36 +53,6 @@ const MainLeftComponent = () => {
             className="d-flex justify-content-around align-items-center inputSection p-0"
           >
             <OffCanvasComponent />
-            {/* <InputGroup className="inputContainer">
-              <InputGroup.Text id="basic-addon1" className="searchIcon">
-                <BsSearch
-                  className="inputIcon"
-                  onClick={() => {
-                    dispatch({
-                      type: "ADD_LOCATION",
-                      payload: search,
-                    });
-                    setLoad(true);
-                  }}
-                />
-              </InputGroup.Text>
-              <FormControl
-                placeholder="Search for places..."
-                aria-label="Search for places..."
-                aria-describedby="basic-addon1"
-                className="inputSearch p-1"
-                value={search}
-                onKeyDown={(e) => {
-                  search !== "" && displayOptions(search);
-                  e.key === "Enter" &&
-                    dispatch({
-                      type: "ADD_LOCATION",
-                      payload: search,
-                    });
-                }}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-            </InputGroup> */}
           </Col>
           <Col
             xs={6}

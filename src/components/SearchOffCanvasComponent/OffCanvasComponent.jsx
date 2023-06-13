@@ -66,7 +66,7 @@ export const OffCanvasComponent = () => {
         className="d-flex align-items-center p-0 offcanvas-button"
         onClick={() => showCanvas()}
       >
-        <BsSearch className="fs-5 mx-3" />
+        <BsSearch className="mx-3 mx-md-1 mx-lg-2 search-icon" />
         <FormControl type="text" placeholder="Digit your city" />
       </Button>
       <Offcanvas
