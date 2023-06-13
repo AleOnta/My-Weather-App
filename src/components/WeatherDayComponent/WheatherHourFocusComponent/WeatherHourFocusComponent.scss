@@ -1,0 +1,43 @@
+.per-hour-recap-item {
+  font-weight: 700;
+  border-bottom: 1px solid lightgray;
+  background-color: rgba(211, 211, 211, 0.459);
+}
+
+.weather-predictions-container {
+  border-bottom: 1px solid lightgray;
+  transition: 0.2s;
+
+  &:hover {
+    background-color: rgba(211, 211, 211, 0.568);
+    transition: 0.2s;
+  }
+  .hour {
+    font-size: 9px;
+    font-weight: 600;
+    color: black;
+    white-space: nowrap;
+    background-color: rgba(211, 211, 211, 0.432);
+  }
+
+  .temp-container,
+  .humidity-container,
+  .wind-container {
+    font-size: 12px;
+    border-left: 1px solid lightgray;
+    min-height: 100%;
+  }
+
+  .wind-container {
+    span {
+      font-size: 09px;
+      color: gray;
+      padding-left: 2px;
+    }
+  }
+
+  .hour-frag-img {
+    width: 20px;
+    margin-right: 5px !important;
+  }
+}
