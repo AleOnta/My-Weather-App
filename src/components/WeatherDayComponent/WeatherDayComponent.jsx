@@ -16,6 +16,7 @@ const itemVariants = {
 const WeatherDayComponent = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [hourFocus, setHourFocus] = useState([]);
+  const [render, setRender] = useState(true);
   const allWeekWeather = useSelector((state) => state.weather.allWeekWeather);
   const weeklyWeather = useSelector(
     (state) => state.weather.weatherWeeklyResult
@@ -42,6 +43,7 @@ const WeatherDayComponent = (props) => {
       (el) => el.dt_txt.slice(0, 10) === toMatch
     );
     setHourFocus(relatedPredictions);
+    setTimeout(() => setRender(false), 500);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -81,7 +83,7 @@ const WeatherDayComponent = (props) => {
           )}
         </motion.div>
         <motion.ul
-          className={`daily-hour-list`}
+          className={`daily-hour-list ${render && "render-list"}`}
           variants={{
             open: {
               clipPath: "inset(0% 0% 0% 0% round 10px)",
