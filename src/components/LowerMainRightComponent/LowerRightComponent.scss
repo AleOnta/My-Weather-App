@@ -37,7 +37,35 @@
     &:hover {
       transform: scale(1.05);
       transition: 0.3s;
+      box-shadow: none !important;
     }
+
+    .open-chart-btn {
+      background-color: inherit;
+      border-color: lightgray;
+
+      &:hover {
+        background-color: rgba(211, 211, 211, 0.616);
+        border-color: gray;
+      }
+
+      &:focus,
+      &:focus-visible {
+        box-shadow: none;
+      }
+
+      &:active {
+        background-color: inherit;
+        border-color: lightgray;
+      }
+    }
+
+    .modal.modal-lg,
+    .modal.modal-xl {
+      max-width: unset !important;
+      right: 0;
+    }
+
     .card-title {
       margin: 0;
       h5 {
