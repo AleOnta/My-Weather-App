@@ -166,12 +166,8 @@ const WeatherDayComponent = ({ day, index }) => {
           </motion.li>
           {hourFocus.length > 0 &&
             hourFocus.map((el, i) => (
-              <motion.li variants={itemVariants}>
-                <WeatherHourFocusComponent
-                  key={i}
-                  hourFragment={el}
-                  index={i}
-                />
+              <motion.li variants={itemVariants} key={i}>
+                <WeatherHourFocusComponent hourFragment={el} index={i} />
               </motion.li>
             ))}
         </motion.ul>
