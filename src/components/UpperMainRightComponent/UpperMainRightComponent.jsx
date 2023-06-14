@@ -133,11 +133,11 @@ const UpperMainRightComponent = () => {
             )
           ) : (
             <div className="d-flex justify-content-around">
-              <span className="loader mx-5"></span>
-              <span className="loader mx-5"></span>
-              <span className="loader mx-5"></span>
-              <span className="loader mx-5"></span>
-              <span className="loader mx-5"></span>
+              <span className="loader mx-2 mx-lg-5"></span>
+              <span className="loader mx-2 mx-lg-5"></span>
+              <span className="loader mx-5 d-none d-lg-block"></span>
+              <span className="loader mx-5 d-none d-lg-block"></span>
+              <span className="loader mx-5 d-none d-lg-block"></span>
             </div>
           )}
         </Row>
