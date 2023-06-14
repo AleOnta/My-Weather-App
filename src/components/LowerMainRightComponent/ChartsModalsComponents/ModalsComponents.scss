@@ -1,0 +1,33 @@
+.chart-modal {
+  background: #93b0d0;
+  background: -moz-linear-gradient(
+    -45deg,
+    #93b0d0 0%,
+    #dbcffb 50%,
+    #ffdfa2 100%
+  );
+  background: -webkit-linear-gradient(
+    -45deg,
+    #93b0d0 0%,
+    #dbcffb 50%,
+    #ffdfa2 100%
+  );
+  background: linear-gradient(135deg, #93b0d0 0%, #dbcffb 50%, #ffdfa2 100%);
+
+  .modal-content {
+    background-color: rgb(245, 245, 245);
+  }
+
+  .modal-title {
+    color: gray;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .modal-body {
+    p {
+      font-size: 12px;
+      margin-bottom: 15px !important;
+    }
+  }
+}
