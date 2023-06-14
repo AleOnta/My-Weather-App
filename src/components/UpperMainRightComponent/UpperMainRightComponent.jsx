@@ -128,7 +128,7 @@ const UpperMainRightComponent = () => {
               ))
             ) : (
               weeklyWeather.map((e, i) => {
-                return <WeatherDayComponent day={e} key={i} />;
+                return <WeatherDayComponent day={e} key={i} index={i} />;
               })
             )
           ) : (

@@ -96,3 +96,15 @@
     display: none;
   }
 }
+
+.dayRow {
+  .daily-hour-list.on-left {
+    left: 0 !important;
+  }
+}
+
+.dayRow {
+  .daily-hour-list.on-right {
+    right: 0 !important;
+  }
+}

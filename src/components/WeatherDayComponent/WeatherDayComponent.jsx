@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { WeatherHourFocusComponent } from "./WheatherHourFocusComponent/WeatherHourFocusComponent";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 const itemVariants = {
   open: {
@@ -13,14 +14,67 @@ const itemVariants = {
   closed: { opacity: 0, y: 20, transition: { duration: 0.2 } },
 };
 
-const WeatherDayComponent = (props) => {
+const WeatherDayComponent = ({ day, index }) => {
+  const { width } = useWindowDimensions();
+  const [render, setRender] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [hourFocus, setHourFocus] = useState([]);
-  const [render, setRender] = useState(true);
   const allWeekWeather = useSelector((state) => state.weather.allWeekWeather);
   const weeklyWeather = useSelector(
     (state) => state.weather.weatherWeeklyResult
   );
+
+  const definePosition = () => {
+    if (width > 308 && width < 418) {
+      switch (index) {
+        case 0:
+          return "on-left";
+        case 1:
+          return "on-right";
+        case 2:
+          return "on-left";
+        case 3:
+          return "on-right";
+        default:
+          return "";
+      }
+    } else if (width >= 418 && width < 526) {
+      switch (index) {
+        case 0:
+          return "on-left";
+        case 2:
+          return "on-right";
+        case 3:
+          return "on-left";
+        case 4:
+          return "on-right";
+        default:
+          return "";
+      }
+    } else if (width >= 526 && width < 634) {
+      switch (index) {
+        case 0:
+          return "on-left";
+        case 1:
+          return "on-left";
+        case 2:
+          return "on-right";
+        case 3:
+          return "on-right";
+        default:
+          return "";
+      }
+    } else if (width >= 634 && width < 768) {
+      switch (index) {
+        case 0:
+          return "on-left";
+        case 4:
+          return "on-right";
+        default:
+          return "";
+      }
+    }
+  };
 
   const theDayIs = (date) => {
     const possibleDay = [
@@ -38,7 +92,7 @@ const WeatherDayComponent = (props) => {
   };
 
   useEffect(() => {
-    const toMatch = new Date(props.day.dt_txt).toISOString().slice(0, 10);
+    const toMatch = new Date(day.dt_txt).toISOString().slice(0, 10);
     const relatedPredictions = allWeekWeather.filter(
       (el) => el.dt_txt.slice(0, 10) === toMatch
     );
@@ -60,30 +114,28 @@ const WeatherDayComponent = (props) => {
         >
           {weeklyWeather && (
             <>
-              <p className="theDay">{theDayIs(props.day.dt_txt)}</p>
+              <p className="theDay">{theDayIs(day.dt_txt)}</p>
               <img
                 src={
                   "http://openweathermap.org/img/wn/" +
-                  props.day.weather[0].icon +
+                  day.weather[0].icon +
                   "@2x.png"
                 }
                 alt="weather icon"
                 className="weatherPng"
               />
               <div className="d-flex justify-content-around day-temp-container">
-                <p className="dayTemp">
-                  {Math.round(props.day.main.temp_max)}°
-                </p>
+                <p className="dayTemp">{Math.round(day.main.temp_max)}°</p>
                 <p className="px-2 dayTemp">-</p>
-                <p className="dayTemp">
-                  {Math.round(props.day.main.temp_min)}°
-                </p>
+                <p className="dayTemp">{Math.round(day.main.temp_min)}°</p>
               </div>
             </>
           )}
         </motion.div>
         <motion.ul
-          className={`daily-hour-list ${render && "render-list"}`}
+          className={`daily-hour-list ${
+            render && "render-list"
+          } ${definePosition()}`}
           variants={{
             open: {
               clipPath: "inset(0% 0% 0% 0% round 10px)",
@@ -110,7 +162,7 @@ const WeatherDayComponent = (props) => {
             className="per-hour-recap-item text-center"
             variants={itemVariants}
           >
-            {theDayIs(props.day.dt_txt)}, {props.day.dt_txt.slice(0, 10)}
+            {theDayIs(day.dt_txt)}, {day.dt_txt.slice(0, 10)}
           </motion.li>
           {hourFocus.length > 0 &&
             hourFocus.map((el, i) => (
