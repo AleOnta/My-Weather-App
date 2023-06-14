@@ -28,6 +28,12 @@ const MainLeftComponent = () => {
     }
   };
 
+  const getCurrentTime = () => {
+    const date = new Date();
+    const hours = date.getHours();
+    return `${hours}:${date.getMinutes()} ${hours >= 12 ? "PM" : "AM"}`;
+  };
+
   useEffect(() => {
     fetchWeather();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -86,7 +92,7 @@ const MainLeftComponent = () => {
               </Col>
               <Col xs={12} className=" p-0 pb-4 pt-3">
                 <h4>
-                  Today, <span>13:00</span>
+                  Today, <span>{getCurrentTime()}</span>
                 </h4>
               </Col>
             </Row>

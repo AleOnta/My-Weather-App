@@ -25,16 +25,27 @@ const LowerMainRightComponent = () => {
   };
 
   const visibilityChecker = (value) => {
-    return value < 2000 ? "Low" : value > 2000 && value < 6000 ? "Average" : "High";
+    return value < 2000
+      ? "Low"
+      : value > 2000 && value < 6000
+      ? "Average"
+      : "High";
   };
 
   const pressureChecker = (value) => {
-    return value < 200 ? "Low" : value > 200 && value < 700 ? "Average" : "High";
+    return value < 200
+      ? "Low"
+      : value > 200 && value < 700
+      ? "Average"
+      : "High";
   };
 
   return (
     <>
-      <Col xs={12} className="highlights px-3 px-md-5 d-flex align-items-center">
+      <Col
+        xs={12}
+        className="highlights px-3 px-md-0 d-flex align-items-center"
+      >
         <h3 className="mb-0">Today's Highlights</h3>
       </Col>
       <Col xs={12} className="lowerCards px-3 px-md-5 pb-5 pb-md-2">
@@ -48,15 +59,29 @@ const LowerMainRightComponent = () => {
                 {dailyWeather.main && (
                   <>
                     <div className="d-flex justify-content-between align-items-center">
-                      <p className="m-0 temp">Min. {Math.round(dailyWeather.main.temp_min)}°</p>
-                      <img src={thermoMin} alt="thermometer" className="weatherIcon" />
+                      <p className="m-0 temp">
+                        Min. {Math.round(dailyWeather.main.temp_min)}°
+                      </p>
+                      <img
+                        src={thermoMin}
+                        alt="thermometer"
+                        className="weatherIcon"
+                      />
                     </div>
 
                     <div className="d-flex justify-content-between align-items-center">
-                      <p className="m-0 temp">Max. {Math.round(dailyWeather.main.temp_max)}°</p>
-                      <img src={thermoMax} alt="thermometer" className="weatherIcon" />
+                      <p className="m-0 temp">
+                        Max. {Math.round(dailyWeather.main.temp_max)}°
+                      </p>
+                      <img
+                        src={thermoMax}
+                        alt="thermometer"
+                        className="weatherIcon"
+                      />
                     </div>
-                    <p className="m-0 temp">Feels like {Math.round(dailyWeather.main.feels_like)}°</p>
+                    <p className="m-0 temp">
+                      Feels like {Math.round(dailyWeather.main.feels_like)}°
+                    </p>
                   </>
                 )}
               </Card.Body>
@@ -75,7 +100,9 @@ const LowerMainRightComponent = () => {
                 <div className="d-flex align-items-center">
                   <BsCompass />
                   <p className="mb-0 pl-2">Deg.</p>
-                  {dailyWeather.wind && <p className="mb-0 pl-2">{dailyWeather.wind.deg}</p>}
+                  {dailyWeather.wind && (
+                    <p className="mb-0 pl-2">{dailyWeather.wind.deg}</p>
+                  )}
                 </div>
               </Card.Body>
             </Card>
@@ -87,11 +114,19 @@ const LowerMainRightComponent = () => {
               </Card.Title>
               <Card.Body>
                 <div className="d-flex align-items-center justify-content-between">
-                  {dailyWeather.sys && <p>{epochToTime(dailyWeather.sys.sunrise)} AM</p>}
-                  <img src={sunrise} alt="sunrise icon" className="weatherIcon" />
+                  {dailyWeather.sys && (
+                    <p>{epochToTime(dailyWeather.sys.sunrise)} AM</p>
+                  )}
+                  <img
+                    src={sunrise}
+                    alt="sunrise icon"
+                    className="weatherIcon"
+                  />
                 </div>
                 <div className="d-flex align-items-center justify-content-between">
-                  {dailyWeather.sys && <p>{epochToTime(dailyWeather.sys.sunset)} PM</p>}
+                  {dailyWeather.sys && (
+                    <p>{epochToTime(dailyWeather.sys.sunset)} PM</p>
+                  )}
                   <img src={sunset} alt="sunset icon" className="weatherIcon" />
                 </div>
               </Card.Body>
@@ -107,10 +142,16 @@ const LowerMainRightComponent = () => {
                   <>
                     <div className="d-flex align-items-center justify-content-between">
                       <h2>{dailyWeather.main.humidity}%</h2>
-                      <img src={humidity} alt="humidity icon" className="weatherIcon" />
+                      <img
+                        src={humidity}
+                        alt="humidity icon"
+                        className="weatherIcon"
+                      />
                     </div>
                     <div>
-                      <p>{humidityChecker(parseInt(dailyWeather.main.humidity))}</p>
+                      <p>
+                        {humidityChecker(parseInt(dailyWeather.main.humidity))}
+                      </p>
                     </div>
                   </>
                 )}
@@ -126,8 +167,14 @@ const LowerMainRightComponent = () => {
                 {dailyWeather.visibility && (
                   <>
                     <div className="d-flex align-items-center justify-content-between">
-                      <h2>{dailyWeather.visibility.toString().slice(0, 2)} km</h2>
-                      <img src={visibility} alt="visibility icon" className="weatherIcon" />
+                      <h2>
+                        {dailyWeather.visibility.toString().slice(0, 2)} km
+                      </h2>
+                      <img
+                        src={visibility}
+                        alt="visibility icon"
+                        className="weatherIcon"
+                      />
                     </div>
                     <div>
                       <p>{visibilityChecker(dailyWeather.visibility)}</p>
@@ -147,7 +194,11 @@ const LowerMainRightComponent = () => {
                   <>
                     <div className="d-flex align-items-center justify-content-between">
                       <h2>{dailyWeather.main.pressure} hPa</h2>
-                      <img src={pressure} alt="pressure icon" className="weatherIcon" />
+                      <img
+                        src={pressure}
+                        alt="pressure icon"
+                        className="weatherIcon"
+                      />
                     </div>
                     <div>
                       <p>{pressureChecker(dailyWeather.main.pressure)}</p>
