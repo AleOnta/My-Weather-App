@@ -125,7 +125,9 @@ const WeatherDayComponent = ({ day, index }) => {
         <motion.div
           className="d-flex flex-column align-items-center dayCard px-0 py-3 "
           whileTap={{ scale: 0.85 }}
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
         >
           {weeklyWeather && (
             <>

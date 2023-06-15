@@ -11,7 +11,7 @@ export const ChartModalComponent = ({ data, type }) => {
   return (
     <>
       <Button
-        className="open-chart-btn d-flex align-items-center p-1 me-3 shadow-none"
+        className="open-chart-btn d-flex align-items-center p-1  me-md-3 shadow-none"
         onClick={() => {
           setShowChart(true);
         }}
@@ -25,7 +25,7 @@ export const ChartModalComponent = ({ data, type }) => {
         show={showChart}
         onHide={() => setShowChart(false)}
         aria-labelledby="contained-modal-title-vcenter"
-        className="chart-modal"
+        className="chart-modal pr-0"
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">

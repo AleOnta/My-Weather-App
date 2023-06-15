@@ -12,17 +12,34 @@
 
 .cardContainer {
   height: 40%;
-  padding: 0 10px 20px 10px;
+  padding: 0 2px 5px 2px;
+
+  @media screen and (min-width: 450px) {
+    padding: 0 5px 10px 5px;
+  }
+
+  @media screen and (min-width: 576px) {
+    padding: 0 8px 14px 8px;
+  }
+
+  @media screen and (min-width: 1300px) {
+    padding: 0 10px 20px 10px;
+  }
+
+  @media screen and (min-width: 1500px) {
+    padding: 0 15px 20px 15px;
+  }
 
   .detailCard {
-    height: 200px;
+    height: 175px;
     background-color: white;
     margin: 0;
     border: none;
-    border-radius: 25px;
+    border-radius: 15px;
     transition: 0.3s;
+    position: relative;
     @media screen and (max-width: 1300px) {
-      height: 175px;
+      height: 135px;
     }
     @media screen and (max-width: 1000px) {
       height: 125px;
@@ -40,18 +57,9 @@
       box-shadow: none !important;
     }
 
-    .temp {
-      font-weight: 600;
-      span {
-        font-size: 14px;
-        font-weight: 400;
-      }
-    }
-
     .open-chart-btn {
       background-color: inherit;
-      border-color: lightgray;
-
+      border: 1px solid lightgray;
       &:hover {
         background-color: rgba(211, 211, 211, 0.616);
         border-color: gray;
@@ -66,6 +74,37 @@
         background-color: inherit;
         border-color: lightgray;
       }
+
+      @media screen and (max-width: 400px) {
+        padding: 0 !important;
+      }
+
+      @media screen and (max-width: 450px) {
+        margin-right: 4px;
+        border: none;
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+      }
+
+      @media screen and (min-width: 450px) {
+        margin-right: 8px !important;
+      }
+
+      @media screen and (min-width: 768px) {
+        border-color: inherit;
+      }
+
+      @media screen and (min-width: 880px) {
+        border-color: lightgray;
+      }
+
+      @media screen and (min-width: 1130px) {
+        border-color: lightgray;
+        .img {
+          width: 15px;
+        }
+      }
     }
 
     .modal.modal-lg,
@@ -78,28 +117,35 @@
       margin: 0;
       h5 {
         color: rgb(150, 150, 150);
-        font-size: 1.3em;
+        font-size: 0.7em;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         font-weight: 600;
-        padding: 0.5em 1em;
+        padding: 0.5em;
         margin: 0;
         transition: 0.2s;
-        @media screen and (max-width: 1400px) {
-          font-size: 1em;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-        @media screen and (max-width: 992px) {
+
+        @media screen and (min-width: 380px) {
           font-size: 0.8em;
         }
-        @media screen and (max-width: 900px) {
-          font-size: 0.65em;
+        @media screen and (min-width: 500px) {
+          font-size: 0.95em;
         }
-        @media screen and (max-width: 767px) {
+        @media screen and (min-width: 650px) {
+          font-size: 1.1em;
+        }
+        @media screen and (min-width: 768px) {
+          font-size: 0.75em;
+        }
+        @media screen and (min-width: 880px) {
           font-size: 0.9em;
         }
-        @media screen and (max-width: 450px) {
-          font-size: 0.7em;
+        @media screen and (min-width: 1150px) {
+          font-size: 1.1em;
+        }
+        @media screen and (min-width: 1400px) {
+          font-size: 1.3em;
         }
       }
     }
@@ -108,30 +154,29 @@
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
-      padding: 0 30px 0.5em 30px;
+      padding: 0 15px 0.5em 15px;
       transition: 0.2s;
-      @media screen and (max-width: 1200px) {
-        padding: 0 15px 0.5em 15px;
-      }
 
       p {
-        font-size: 1.1em;
+        font-size: 0.7em;
         margin: 0;
         transition: 0.2s;
-        @media screen and (max-width: 1400px) {
-          font-size: 1em;
-        }
-        @media screen and (max-width: 1150px) {
+
+        @media screen and (min-width: 375px) {
           font-size: 0.8em;
         }
-        @media screen and (max-width: 992px) {
-          font-size: 0.7em;
+        @media screen and (min-width: 425px) {
+          font-size: 0.85em;
         }
-        @media screen and (max-width: 992px) {
-          font-size: 0.8em;
+        @media screen and (min-width: 1150px) {
+          font-size: 0.95em;
         }
-        @media screen and (max-width: 450px) {
-          font-size: 0.7em;
+      }
+
+      p.temp {
+        font-weight: 600;
+        span {
+          font-weight: 400;
         }
       }
 

@@ -1,8 +1,11 @@
 import thermoMax from "../../../assets/img/thermo-max.svg";
 import humidity from "../../../assets/img/humidity.svg";
 import wind from "../../../assets/img/wind.svg";
+import { useSelector } from "react-redux";
 
 export const WeatherHourFocusComponent = ({ hourFragment, index }) => {
+  const tempMeasure = useSelector((state) => state.measure);
+
   const retrieveHour = (date) => {
     const myDate = new Date(date);
     const hour = myDate.getHours();
@@ -23,7 +26,12 @@ export const WeatherHourFocusComponent = ({ hourFragment, index }) => {
       />
       <div className="temp-container ps-1 me-2 d-flex align-items-center">
         <img className="hour-frag-img" src={thermoMax} alt="temperature icon" />
-        <p className="hour-frag-data">{Math.round(hourFragment.main.temp)}°</p>
+        <p className="hour-frag-data">
+          {tempMeasure === "cel"
+            ? Math.round(hourFragment.main.temp)
+            : Math.round(hourFragment.main.temp * (9 / 5) + 32)}
+          °
+        </p>
       </div>
       <div className="humidity-container ps-1 me-2 d-flex align-items-center">
         <img className="hour-frag-img" src={humidity} alt="humidity icon" />

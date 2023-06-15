@@ -67,7 +67,12 @@ export const OffCanvasComponent = () => {
         onClick={() => showCanvas()}
       >
         <BsSearch className="mx-3 mx-md-1 mx-lg-2 search-icon" />
-        <FormControl type="text" placeholder="Digit your city" />
+        <FormControl
+          type="text"
+          placeholder="Digit your city"
+          disabled
+          className="false-input"
+        />
       </Button>
       <Offcanvas
         show={show}
@@ -94,7 +99,7 @@ export const OffCanvasComponent = () => {
               results to see the weather predictions for the next week.
             </p>
             <div className="d-flex">
-              <InputGroup className="inputContainer">
+              <InputGroup className="inputContainer" autoFocus>
                 <InputGroup.Text id="basic-addon1" className="searchIcon">
                   <BsSearch className="inputIcon" />
                 </InputGroup.Text>
@@ -104,7 +109,6 @@ export const OffCanvasComponent = () => {
                   aria-describedby="basic-addon1"
                   className="inputSearch p-1"
                   value={inputSearch}
-                  autoFocus
                   onKeyDown={() => {
                     inputSearch !== "" && displayOptions(inputSearch);
                   }}

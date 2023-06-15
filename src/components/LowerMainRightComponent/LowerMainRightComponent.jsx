@@ -22,13 +22,6 @@ const LowerMainRightComponent = () => {
     (state) => state.weather.weatherWeeklyResult
   );
 
-  const epochToTime = (epoch) => {
-    const date = new Date(epoch * 1000);
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    return hours + ":" + minutes;
-  };
-
   const retrieveHour = (epoch, diffTZ) => {
     const d = new Date(epoch * 1000);
     const localTime = d.getTime();
@@ -161,7 +154,7 @@ const LowerMainRightComponent = () => {
       >
         <h3 className="mb-0">Today's Highlights</h3>
       </Col>
-      <Col xs={12} className="lowerCards px-3 px-md-5 pb-5 pb-md-2">
+      <Col xs={12} className="lowerCards px-3 px-md-0 px-lg-5 pb-5 pb-md-2">
         <Row xs={2} md={3} className="lowerCardsRow">
           <Col className="cardContainer">
             <Card className="detailCard temperature">

@@ -39,6 +39,7 @@
   }
 
   input {
+    background-color: white !important;
     &:focus {
       box-shadow: none;
       border-color: rgb(148, 148, 148);

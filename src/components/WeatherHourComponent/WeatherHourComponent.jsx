@@ -5,6 +5,7 @@ import humidity from "../../assets/img/humidity.svg";
 import pressure from "../../assets/img/pressure.svg";
 
 export const WeatherHourComponent = ({ hourFragment }) => {
+  const tempMeasure = useSelector((state) => state.measure);
   const allWeekWeather = useSelector((state) => state.weather.allWeekWeather);
 
   const retrieveHour = (date) => {
@@ -38,7 +39,9 @@ export const WeatherHourComponent = ({ hourFragment }) => {
                     className="hour-icon-data"
                   />
                   <p className="hour-actual-data">
-                    {Math.round(hourFragment.main.temp)}
+                    {tempMeasure === "cel"
+                      ? Math.round(hourFragment.main.temp)
+                      : Math.round(hourFragment.main.temp * (9 / 5) + 32)}
                     <span className="data-measure">°</span>
                   </p>
                 </div>
