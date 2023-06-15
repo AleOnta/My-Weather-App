@@ -2,7 +2,12 @@ import { Col, Row } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import WeatherDayComponent from "../WeatherDayComponent/WeatherDayComponent";
-import { setAllWeekWeather, setWeeklyWeather } from "../../redux/actions";
+import {
+  setAllWeekWeather,
+  setCelsius,
+  setFarheneit,
+  setWeeklyWeather,
+} from "../../redux/actions";
 import { WeatherHourComponent } from "../WeatherHourComponent/WeatherHourComponent";
 
 const UpperMainRightComponent = () => {
@@ -104,7 +109,10 @@ const UpperMainRightComponent = () => {
             className={`${
               celsiusOrFarheneit === "celsius" && "celsiusOrFarheneitSelected"
             } celsiusOrFarheneit mr-1 mr-sm-3`}
-            onClick={() => setCelsiusOrFarheneit("celsius")}
+            onClick={() => {
+              setCelsiusOrFarheneit("celsius");
+              dispatch(setCelsius());
+            }}
           >
             °C
           </button>
@@ -112,7 +120,10 @@ const UpperMainRightComponent = () => {
             className={`${
               celsiusOrFarheneit === "farheneit" && "celsiusOrFarheneitSelected"
             } celsiusOrFarheneit `}
-            onClick={() => setCelsiusOrFarheneit("farheneit")}
+            onClick={() => {
+              setCelsiusOrFarheneit("farheneit");
+              dispatch(setFarheneit());
+            }}
           >
             °F
           </button>

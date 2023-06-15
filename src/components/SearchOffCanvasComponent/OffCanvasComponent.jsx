@@ -122,9 +122,10 @@ export const OffCanvasComponent = () => {
               </h5>
               <ul className="location-results-list">
                 {searchResults.length > 0 &&
-                  searchResults.map((el) => (
+                  searchResults.map((el, index) => (
                     <li
                       className="d-flex aling-items-center location-result position-relative"
+                      key={index + " - " + el.name}
                       onClick={() => {
                         fetchLocation(el.name);
                         hideCanvas();

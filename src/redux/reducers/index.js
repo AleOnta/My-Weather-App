@@ -1,5 +1,6 @@
 const initialState = {
   isLoading: true,
+  measure: "cel",
   weather: {
     toFetchGeo: "Milano",
     geoResult: {
@@ -64,6 +65,23 @@ const mainReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: action.payload,
+        weather: {
+          ...state.weather,
+        },
+      };
+
+    case "SET_CELSIUS":
+      return {
+        ...state,
+        measure: action.payload,
+        weather: {
+          ...state.weather,
+        },
+      };
+    case "SET_FARHENEIT":
+      return {
+        ...state,
+        measure: action.payload,
         weather: {
           ...state.weather,
         },

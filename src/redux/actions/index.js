@@ -3,6 +3,16 @@ export const setLoad = (bool) => ({
   payload: bool,
 });
 
+export const setCelsius = () => ({
+  type: "SET_CELSIUS",
+  payload: "cel",
+});
+
+export const setFarheneit = () => ({
+  type: "SET_FARHENEIT",
+  payload: "far",
+});
+
 export const setWeather = (values) => ({
   type: "ADD_WEATHER_RESULT",
   payload: values,
