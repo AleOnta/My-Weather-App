@@ -15,7 +15,7 @@ const MainLeftComponent = () => {
   const fetchWeather = async () => {
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${locationCoordinates.lat}&lon=${locationCoordinates.lon}&appid=a07c515bd5eb284d7c76a2d03970002b&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${locationCoordinates.lat}&lon=${locationCoordinates.lon}&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}&units=metric`
       );
       if (response.ok) {
         const data = await response.json();
