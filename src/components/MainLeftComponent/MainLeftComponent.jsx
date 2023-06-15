@@ -7,6 +7,7 @@ import { setLoad, setWeather } from "../../redux/actions";
 
 const MainLeftComponent = () => {
   const ready = useSelector((state) => state.isLoading);
+  const tempMeasure = useSelector((state) => state.measure);
   const dailyWeather = useSelector((state) => state.weather.weatherDailyResult);
   const locationCoordinates = useSelector((state) => state.weather.geoResult);
   const dispatch = useDispatch();
@@ -31,7 +32,10 @@ const MainLeftComponent = () => {
   const getCurrentTime = () => {
     const date = new Date();
     const hours = date.getHours();
-    return `${hours}:${date.getMinutes()} ${hours >= 12 ? "PM" : "AM"}`;
+    const minutes = date.getMinutes();
+    return `${hours < 10 ? "0" + hours : hours}:${
+      minutes < 10 ? "0" + minutes : minutes
+    } ${hours >= 12 ? "PM" : "AM"}`;
   };
 
   useEffect(() => {
@@ -86,7 +90,10 @@ const MainLeftComponent = () => {
               <Col xs={12}>
                 {!ready && (
                   <h3 className="degree">
-                    {Math.round(dailyWeather.main.temp)}°
+                    {tempMeasure === "cel"
+                      ? Math.round(dailyWeather.main.temp)
+                      : Math.round(dailyWeather.main.temp * (9 / 5) + 32)}
+                    °
                   </h3>
                 )}
               </Col>
