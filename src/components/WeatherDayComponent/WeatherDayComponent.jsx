@@ -1,7 +1,7 @@
 import { Row } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { WeatherHourFocusComponent } from "./WheatherHourFocusComponent/WeatherHourFocusComponent";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 
@@ -15,6 +15,7 @@ const itemVariants = {
 };
 
 const WeatherDayComponent = ({ day, index }) => {
+  const focusRef = useRef();
   const { width } = useWindowDimensions();
   const [render, setRender] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
@@ -99,7 +100,20 @@ const WeatherDayComponent = ({ day, index }) => {
     setHourFocus(relatedPredictions);
     setTimeout(() => setRender(false), 500);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [allWeekWeather]);
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (!focusRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  });
 
   return (
     <motion.div
@@ -133,6 +147,7 @@ const WeatherDayComponent = ({ day, index }) => {
           )}
         </motion.div>
         <motion.ul
+          ref={focusRef}
           className={`daily-hour-list ${
             render && "render-list"
           } ${definePosition()}`}

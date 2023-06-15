@@ -17,7 +17,6 @@ const UpperMainRightComponent = () => {
   const [todayWeather, setTodayWeather] = useState([]);
   const [dayOrWeekLoading, setDayOrWeekLoading] = useState(false);
   const [celsiusOrFarheneit, setCelsiusOrFarheneit] = useState("celsius");
-  const isLoading = useSelector((state) => state.isLoading);
   const locationCoordinates = useSelector((state) => state.weather.geoResult);
 
   const weeklyFetcher = async () => {
@@ -68,7 +67,7 @@ const UpperMainRightComponent = () => {
   useEffect(() => {
     weeklyFetcher();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading]);
+  }, [locationCoordinates]);
 
   return (
     <>
