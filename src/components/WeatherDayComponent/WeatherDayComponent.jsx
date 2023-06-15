@@ -20,6 +20,7 @@ const WeatherDayComponent = ({ day, index }) => {
   const [render, setRender] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [hourFocus, setHourFocus] = useState([]);
+  const tempMeasure = useSelector((state) => state.measure);
   const allWeekWeather = useSelector((state) => state.weather.allWeekWeather);
   const weeklyWeather = useSelector(
     (state) => state.weather.weatherWeeklyResult
@@ -139,9 +140,19 @@ const WeatherDayComponent = ({ day, index }) => {
                 className="weatherPng"
               />
               <div className="d-flex justify-content-around day-temp-container">
-                <p className="dayTemp">{Math.round(day.main.temp_max)}°</p>
+                <p className="dayTemp">
+                  {tempMeasure === "cel"
+                    ? Math.round(day.main.temp_max)
+                    : Math.round(day.main.temp_max * (9 / 5) + 32)}
+                  °
+                </p>
                 <p className="px-2 dayTemp">-</p>
-                <p className="dayTemp">{Math.round(day.main.temp_min)}°</p>
+                <p className="dayTemp">
+                  {tempMeasure === "cel"
+                    ? Math.round(day.main.temp_min)
+                    : Math.round(day.main.temp_min * (9 / 5) + 32)}
+                  °
+                </p>
               </div>
             </>
           )}
