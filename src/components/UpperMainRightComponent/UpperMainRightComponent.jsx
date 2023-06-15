@@ -27,7 +27,7 @@ const UpperMainRightComponent = () => {
   const weeklyFetcher = async () => {
     try {
       const response = await fetch(
-        `http://api.openweathermap.org/data/2.5/forecast?lat=${locationCoordinates.lat}&lon=${locationCoordinates.lon}&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}&units=metric`
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${locationCoordinates.lat}&lon=${locationCoordinates.lon}&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}&units=metric`
       );
       if (response.ok) {
         const data = await response.json();
