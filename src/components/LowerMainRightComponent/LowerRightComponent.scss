@@ -40,6 +40,14 @@
       box-shadow: none !important;
     }
 
+    .temp {
+      font-weight: 600;
+      span {
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+
     .open-chart-btn {
       background-color: inherit;
       border-color: lightgray;

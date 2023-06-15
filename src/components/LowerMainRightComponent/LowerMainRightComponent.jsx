@@ -16,6 +16,7 @@ const LowerMainRightComponent = () => {
   const [windData, setWindData] = useState(null);
   const [humidityData, setHumidityData] = useState(null);
   const [temperatureData, setTemperatureData] = useState(null);
+  const tempMeasure = useSelector((state) => state.measure);
   const dailyWeather = useSelector((state) => state.weather.weatherDailyResult);
   const dayByDayWeather = useSelector(
     (state) => state.weather.weatherWeeklyResult
@@ -26,6 +27,21 @@ const LowerMainRightComponent = () => {
     const hours = date.getHours();
     const minutes = date.getMinutes();
     return hours + ":" + minutes;
+  };
+
+  const retrieveHour = (epoch, diffTZ) => {
+    const d = new Date(epoch * 1000);
+    const localTime = d.getTime();
+    const localOffset = d.getTimezoneOffset() * 60000;
+    const utc = localTime + localOffset;
+    const offset = Math.round(diffTZ / 60 / 60);
+    const current = utc + 3600000 * offset;
+    const currentTime = new Date(current);
+    const hours = currentTime.getHours();
+    const minutes = currentTime.getMinutes();
+    return `${hours < 10 ? "0" + hours : hours}:${
+      minutes < 10 ? "0" + minutes : minutes
+    } ${hours >= 12 ? "PM" : "AM"}`;
   };
 
   const humidityChecker = (value) => {
@@ -160,7 +176,13 @@ const LowerMainRightComponent = () => {
                   <>
                     <div className="d-flex justify-content-between align-items-center">
                       <p className="m-0 temp">
-                        Min. {Math.round(dailyWeather.main.temp_min)}°
+                        <span>Min.</span>{" "}
+                        {tempMeasure === "cel"
+                          ? Math.round(dailyWeather.main.temp_min)
+                          : Math.round(
+                              dailyWeather.main.temp_min * (9 / 5) + 32
+                            )}
+                        °
                       </p>
                       <img
                         src={thermoMin}
@@ -171,7 +193,13 @@ const LowerMainRightComponent = () => {
 
                     <div className="d-flex justify-content-between align-items-center">
                       <p className="m-0 temp">
-                        Max. {Math.round(dailyWeather.main.temp_max)}°
+                        <span>Max.</span>{" "}
+                        {tempMeasure === "cel"
+                          ? Math.round(dailyWeather.main.temp_max)
+                          : Math.round(
+                              dailyWeather.main.temp_max * (9 / 5) + 32
+                            )}
+                        °
                       </p>
                       <img
                         src={thermoMax}
@@ -180,7 +208,13 @@ const LowerMainRightComponent = () => {
                       />
                     </div>
                     <p className="m-0 temp">
-                      Feels like {Math.round(dailyWeather.main.feels_like)}°
+                      <span>Feels like</span>{" "}
+                      {tempMeasure === "cel"
+                        ? Math.round(dailyWeather.main.feels_like)
+                        : Math.round(
+                            dailyWeather.main.feels_like * (9 / 5) + 32
+                          )}
+                      °
                     </p>
                   </>
                 )}
@@ -218,7 +252,12 @@ const LowerMainRightComponent = () => {
               <Card.Body>
                 <div className="d-flex align-items-center justify-content-between">
                   {dailyWeather.sys && (
-                    <p>{epochToTime(dailyWeather.sys.sunrise)} AM</p>
+                    <p>
+                      {retrieveHour(
+                        dailyWeather.sys.sunrise,
+                        dailyWeather.timezone
+                      )}
+                    </p>
                   )}
                   <img
                     src={sunrise}
@@ -228,7 +267,12 @@ const LowerMainRightComponent = () => {
                 </div>
                 <div className="d-flex align-items-center justify-content-between">
                   {dailyWeather.sys && (
-                    <p>{epochToTime(dailyWeather.sys.sunset)} PM</p>
+                    <p>
+                      {retrieveHour(
+                        dailyWeather.sys.sunset,
+                        dailyWeather.timezone
+                      )}
+                    </p>
                   )}
                   <img src={sunset} alt="sunset icon" className="weatherIcon" />
                 </div>
