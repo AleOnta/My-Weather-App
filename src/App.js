@@ -7,7 +7,7 @@ function App() {
   return (
     <Container
       fluid
-      className="d-flex justify-content-center align-items-center p-3 p-md-5  fullContainer"
+      className="d-flex justify-content-center align-items-center fullContainer"
     >
       <Row className="m-0">
         <Col xs={12} className="mainContainer p-0">

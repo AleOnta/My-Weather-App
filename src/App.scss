@@ -39,11 +39,20 @@ body {
 }
 
 .mainContainer {
+  //transform: scale(0.9);
   border-radius: 25px;
-  -webkit-box-shadow: 5px 5px 15px 2px #8d8d8d;
-  box-shadow: 5px 5px 15px 2px #8d8d8d;
+  border: 2px solid lightgray;
   max-width: 1600px;
-  max-height: 90vh;
+  //max-height: 90vh;
+
+  @media screen and (min-width: 768px) {
+    transform: scale(0.95);
+  }
+
+  @media screen and (min-width: 992px) {
+    transform: none;
+  }
+
   @media screen and (max-width: 767px) {
     max-height: none;
   }
